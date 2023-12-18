@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variables</title>
+  </head>
+  <body>
+    <h1>Cart Quantity</h1>
+
+    <button onclick="console.log(`Cart Quantity: ${cartQuantity}`)">
+      Show quantity
+    </button>
+    <button
+      onclick="
+        cartQuantity += 1;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      Add Cart
+    </button>
+    <button
+      onclick="
+        cartQuantity += 2;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      +2
+    </button>
+    <button
+      onclick="
+        cartQuantity += 3;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      +3
+    </button>
+    <button
+      onclick="
+        cartQuantity += 4;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      +4
+    </button>
+    <button
+      onclick="
+        cartQuantity += 5;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      +5
+    </button>
+    <button
+      onclick="
+        cartQuantity--;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      Remove Cart
+    </button>
+    <button
+      onclick="
+        cartQuantity -= 2;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      -2
+    </button>
+    <button
+      onclick="
+        cartQuantity -= 3;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      -3
+    </button>
+    <button
+      onclick="
+        cartQuantity = 0;
+        console.log(`Cart Quantity: ${cartQuantity}`)"
+    >
+      Reset Cart
+    </button>
+  </body>
+  <script>
+    let cartQuantity = 0;
+
+    const name = 'Giorgio'
+    console.log(`My name is ${name}`);
+
+    let cost = (1*5)+(2*3)+(1*9)
+
+    console.log(`Cost of food: ${cost}`);
+
+    let tax = (cost * 0.1)
+
+    console.log(`Tax (10%): ${tax}`)
+
+    const total = cost + tax;
+
+    console.log(`Il totale è: ${total}`)
+  </script>
+</html>
