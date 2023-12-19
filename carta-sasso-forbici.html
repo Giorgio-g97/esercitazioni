@@ -98,12 +98,59 @@
     let computerNum = "";
     let result = "";
 
-    const cart = 5
+    // Truthy e falsy
+    /* const cart = 5
+
+    let variable01;
+
+    console.log(variable01)
 
     if(cart){
       console.log('Il carrello contiene prodotti');
     }else{
       console.log('Il carrello non contiene prodotti');
+    } */
+
+    // Ternary operator
+
+    true ? 'truthy' : 'falsy'
+
+    // Guard Operator &&
+
+    // Se mex è 5 allora truthy, allora 'Hello'
+    const mex = 5 && 'Hello'
+
+    console.log(mex);
+
+    // Default operator
+
+    // impostiamo come predefinito il valore 'EUR'
+    const value = 'EUR' || 'USD'
+
+    console.log(value)
+
+    // Exercises
+
+    // 1.
+    /* let hour = ''
+    const name = 'Giorgio'
+
+    if(hour >= 6 && hour < 12){
+      console.log(`Good morning ${name}`)
+    }else if(hour >= 13 && hour < 17){
+      console.log(`Good afternoon! ${name}`)
+    }else{
+      console.log(`Good night! ${name}`)
+    } */
+
+    // 2.
+    let age = '6';
+    isHoliday= true;
+
+    if(isHoliday == false && age <= 6 || age >= 65){
+      console.log('Discount')
+    }else{
+      console.log('Not discount')
     }
   </script>
 </html>
