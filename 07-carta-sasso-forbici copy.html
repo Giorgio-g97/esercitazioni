@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <h1>Rock, Paper, Scissors</h1>
+
+    <!-- Quando clicchi sul bottone:
+1. Genera Carta, Forbici, Sasso random dal pc
+2. Compara con quello che hai selezionato
+3. Visualizza il risultato
+-->
+    <!-- 1. 
+-->
+    <button
+      onclick="
+
+// Generazione Random 
+// 1a. Se il numero è compreso tra 0 e 1/3: Sasso
+// 1b. Se tra 1/3 e 2/3: Carta
+// 1c. Se tra 2/3 e 1: Forbici
+
+        
+
+// Compara il risultato del PC con sasso
+
+        if(computerNum === 'Rock'){
+            result = 'hai pareggiato'
+        }else if(computerNum === 'Paper'){
+            result = 'hai perso'
+        }else if(computerNum === 'Scissors'){
+          result = 'hai vinto!'
+        }
+
+// Stampa il risultato        
+        alert(`Hai scelto sasso, il computer ha scelto ${computerNum}, quindi ${result}`)
+    "
+    >
+      Rock
+    </button>
+    <button
+      onclick="
+
+        pickPCMove()
+
+        if(randomNumber >= 0 && randomNumber < 1/3){
+            computerNum = 'Rock'
+        }else if(randomNumber >= 1/3 && randomNumber < 2/3){
+          computerNum = 'Paper'
+        }else if(randomNumber >= 2/3 && randomNumber < 1){
+          computerNum = 'Scissors'
+        }
+        if(computerNum === 'Rock'){
+            result = 'hai vinto!'
+        }else if(computerNum === 'Paper'){
+            result = 'hai pareggiato'
+        }else if(computerNum === 'Scissors'){
+          result = 'hai perso'
+        }
+        alert(`Hai scelto carta, il computer ha scelto ${computerNum}, quindi ${result}`)
+    "
+    >
+      Paper
+    </button>
+    <button
+      onclick="
+
+        if(randomNumber >= 0 && randomNumber < 1/3){
+            computerNum = 'Rock'
+        }else if(randomNumber >= 1/3 && randomNumber < 2/3){
+          computerNum = 'Paper'
+        }else if(randomNumber >= 2/3 && randomNumber < 1){
+          computerNum = 'Scissors'
+        }
+        if(computerNum === 'Rock'){
+            result = 'hai perso'
+        }else if(computerNum === 'Paper'){
+            result = 'hai vinto'
+        }else if(computerNum === 'Scissors'){
+          result = 'hai pareggiato'
+        }
+        alert(`Hai scelto forbici, il computer ha scelto ${computerNum}, quindi ${result}`)
+    "
+    >
+      Scissors
+    </button>
+  </body>
+
+  <script>
+
+    // Truthy e falsy
+    /* const cart = 5
+
+    let variable01;
+
+    console.log(variable01)
+
+    if(cart){
+      console.log('Il carrello contiene prodotti');
+    }else{
+      console.log('Il carrello non contiene prodotti');
+    } */
+
+    // Ternary operator
+
+    true ? "truthy" : "falsy";
+
+    // Guard Operator &&
+
+    // Se mex è 5 allora truthy, allora 'Hello'
+    const mex = 5 && "Hello";
+
+    console.log(mex);
+
+    // Default operator
+
+    // impostiamo come predefinito il valore 'EUR'
+    const value = "EUR" || "USD";
+
+    console.log(value);
+
+    let result = "";
+
+    let computerNum = "";
+
+    const pickPCMove = () => {
+      const randomNumber = Math.random();
+
+      if (randomNumber >= 0 && randomNumber < 1 / 3) {
+        computerNum = "Rock";
+      } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+        computerNum = "Paper";
+      } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+        computerNum = "Scissors";
+      }
+    }; // Video 4h
+  </script>
+</html>
