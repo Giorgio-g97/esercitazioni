@@ -15,6 +15,7 @@
 -->
     <button
       onclick="
+// Variabile salvata globalmente
         const computerNum = pickPCMove();
 
         if(computerNum === 'Rock'){
@@ -70,9 +71,13 @@
   <script>
     let result = "";
 
-    let computerNum = "";
+    
 
     const pickPCMove = () => {
+
+// Variabile salvata all'interno dello scope funzione
+      let computerNum ='';
+
       const randomNumber = Math.random();
 
       if (randomNumber >= 0 && randomNumber < 1 / 3) {
