@@ -13,19 +13,9 @@
 2. Compara con quello che hai selezionato
 3. Visualizza il risultato
 -->
-    <!-- 1. 
--->
     <button
       onclick="
-
-// Generazione Random 
-// 1a. Se il numero è compreso tra 0 e 1/3: Sasso
-// 1b. Se tra 1/3 e 2/3: Carta
-// 1c. Se tra 2/3 e 1: Forbici
-
-        
-
-// Compara il risultato del PC con sasso
+        const computerNum = pickPCMove();
 
         if(computerNum === 'Rock'){
             result = 'hai pareggiato'
@@ -44,15 +34,8 @@
     <button
       onclick="
 
-        pickPCMove()
+        const computerNum = pickPCMove();
 
-        if(randomNumber >= 0 && randomNumber < 1/3){
-            computerNum = 'Rock'
-        }else if(randomNumber >= 1/3 && randomNumber < 2/3){
-          computerNum = 'Paper'
-        }else if(randomNumber >= 2/3 && randomNumber < 1){
-          computerNum = 'Scissors'
-        }
         if(computerNum === 'Rock'){
             result = 'hai vinto!'
         }else if(computerNum === 'Paper'){
@@ -68,13 +51,8 @@
     <button
       onclick="
 
-        if(randomNumber >= 0 && randomNumber < 1/3){
-            computerNum = 'Rock'
-        }else if(randomNumber >= 1/3 && randomNumber < 2/3){
-          computerNum = 'Paper'
-        }else if(randomNumber >= 2/3 && randomNumber < 1){
-          computerNum = 'Scissors'
-        }
+        const computerNum = pickPCMove(); 
+
         if(computerNum === 'Rock'){
             result = 'hai perso'
         }else if(computerNum === 'Paper'){
@@ -90,38 +68,6 @@
   </body>
 
   <script>
-
-    // Truthy e falsy
-    /* const cart = 5
-
-    let variable01;
-
-    console.log(variable01)
-
-    if(cart){
-      console.log('Il carrello contiene prodotti');
-    }else{
-      console.log('Il carrello non contiene prodotti');
-    } */
-
-    // Ternary operator
-
-    true ? "truthy" : "falsy";
-
-    // Guard Operator &&
-
-    // Se mex è 5 allora truthy, allora 'Hello'
-    const mex = 5 && "Hello";
-
-    console.log(mex);
-
-    // Default operator
-
-    // impostiamo come predefinito il valore 'EUR'
-    const value = "EUR" || "USD";
-
-    console.log(value);
-
     let result = "";
 
     let computerNum = "";
@@ -136,6 +82,8 @@
       } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
         computerNum = "Scissors";
       }
-    }; // Video 4h
+
+      return computerNum;
+    };
   </script>
 </html>
