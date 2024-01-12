@@ -11,11 +11,11 @@
 <script>
 
     // Funct with param
-    const calcTax = (param1) => {
-        console.log(param1 * 0.1)
+    const calcTax = (param1, taxPerc = 0.1) => { // Set Default Param
+        console.log(param1 * taxPerc)
     }
 
-    calcTax(1000);
+    calcTax(1000, 0.2);
     calcTax(2000);
     // 4h 20m
 </script>

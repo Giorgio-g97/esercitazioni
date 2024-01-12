@@ -13,70 +13,50 @@
 2. Compara con quello che hai selezionato
 3. Visualizza il risultato
 -->
-    <button
-      onclick="
-// Variabile salvata globalmente
-        const computerNum = pickPCMove();
-
-        if(computerNum === 'Rock'){
-            result = 'hai pareggiato'
-        }else if(computerNum === 'Paper'){
-            result = 'hai perso'
-        }else if(computerNum === 'Scissors'){
-          result = 'hai vinto!'
-        }
-
-// Stampa il risultato        
-        alert(`Hai scelto sasso, il computer ha scelto ${computerNum}, quindi ${result}`)
-    "
-    >
-      Rock
-    </button>
-    <button
-      onclick="
-
-        const computerNum = pickPCMove();
-
-        if(computerNum === 'Rock'){
-            result = 'hai vinto!'
-        }else if(computerNum === 'Paper'){
-            result = 'hai pareggiato'
-        }else if(computerNum === 'Scissors'){
-          result = 'hai perso'
-        }
-        alert(`Hai scelto carta, il computer ha scelto ${computerNum}, quindi ${result}`)
-    "
-    >
-      Paper
-    </button>
-    <button
-      onclick="
-
-        const computerNum = pickPCMove(); 
-
-        if(computerNum === 'Rock'){
-            result = 'hai perso'
-        }else if(computerNum === 'Paper'){
-            result = 'hai vinto'
-        }else if(computerNum === 'Scissors'){
-          result = 'hai pareggiato'
-        }
-        alert(`Hai scelto forbici, il computer ha scelto ${computerNum}, quindi ${result}`)
-    "
-    >
-      Scissors
-    </button>
+    <button onclick="playGame('rock');">Rock</button>
+    <button onclick="playGame('paper')">Paper</button>
+    <button onclick="playGame('scissors')">Scissors</button>
   </body>
 
   <script>
-    let result = "";
+    const playGame = (playerMove) => {
+      const computerNum = pickPCMove();
+      let result = "";
 
-    
+      if (playerMove === "rock") {
+        if (computerNum === "Rock") {
+          result = "hai pareggiato";
+        } else if (computerNum === "Paper") {
+          result = "hai perso";
+        } else if (computerNum === "Scissors") {
+          result = "hai vinto!";
+        }
+      } else if (playerMove === "paper") {
+        if (computerNum === "Rock") {
+          result = "hai vinto!";
+        } else if (computerNum === "Paper") {
+          result = "hai pareggiato";
+        } else if (computerNum === "Scissors") {
+          result = "hai perso";
+        }
+      } else if (playerMove === "scissors") {
+        if (computerNum === "Rock") {
+          result = "hai perso";
+        } else if (computerNum === "Paper") {
+          result = "hai vinto";
+        } else if (computerNum === "Scissors") {
+          result = "hai pareggiato";
+        }
+      }
+
+      alert(
+        `Hai scelto ${playerMove}, il computer ha scelto ${computerNum}, quindi ${result}`
+      );
+    };
 
     const pickPCMove = () => {
-
-// Variabile salvata all'interno dello scope funzione
-      let computerNum ='';
+      // Variabile salvata all'interno dello scope funzione
+      let computerNum = "";
 
       const randomNumber = Math.random();
 
