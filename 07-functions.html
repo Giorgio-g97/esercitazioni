@@ -1,33 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Functions</title>
-</head>
-<body>
+  </head>
+  <body>
     <p></p>
-</body>
-<script>
-
+  </body>
+  <script>
     // Funct with param
-   // const calcTax = (param1, taxPerc = 0.1) => { // Set Default Param
+    // const calcTax = (param1, taxPerc = 0.1) => { // Set Default Param
     //    console.log(param1 * taxPerc)
-   // }
+    // }
 
-//    calcTax(1000, 0.2);
-//    calcTax(2000);
+    //    calcTax(1000, 0.2);
+    //    calcTax(2000);
 
-// Exercises - Functions
-// 1.
- const greet = () => {
-    console.log('Hello!');
- }
+    // Exercises - Functions
+    // 1.
+    /* const greet = (name) => {
+      if (!name) {
+        // Se name non esiste
+        console.log("Hi there");
+      } else {
+        console.log(`Hello ${name}`);
+      }
+    };
 
- greet();
- greet();
- greet();
- 
- // 4h34m
-</script>
+    greet("PRova");
+    greet(); */
+
+    // 2.
+    /* const convertCelToFar = (celsius) => {
+      const form = (celsius * 9) / 5 + 32;
+
+      return form;
+    }; */
+
+    /* console.log(convertFar(25)) */
+
+    /* const convertFarToCel = (fahren) => {
+      const form = ((fahren - 32) * 5) / 9;
+
+      return form;
+    }; */
+
+    /* console.log(convertCels(86)) */
+
+    // 3.
+    /* const convertTemp = (degrees, unit) => {
+      if (unit === "C") {
+        const res = convertCelToFar(degrees)
+        const string = res + 'F'
+        console.log(string);
+      } else if (unit === "F") {
+        const res = convertFarToCel(degrees);
+        const string = res + 'C'
+        console.log(string);
+      }
+    }
+
+    convertTemp(25, "C");
+    convertTemp(86, "F"); */
+
+    // Final Exercise
+
+    /* let calc = "";
+
+    const calculation = (num) => {
+      if (num) {
+        calc += num;
+        console.log(calc);
+      }
+    };
+
+    const equal = () => {
+      const res = eval(calc);
+      console.log(res);
+    };
+
+    const reset = () => {
+      calc = "";
+    }; */
+  </script>
 </html>
