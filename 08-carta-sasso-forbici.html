@@ -16,20 +16,32 @@
     <button onclick="playGame('rock');">Rock</button>
     <button onclick="playGame('paper')">Paper</button>
     <button onclick="playGame('scissors')">Scissors</button>
-    <button onclick="
+    <button
+      onclick="
       score.wins = 0;
       score.losses = 0;
       score.ties = 0;
-    ">Reset Score</button>
+      localStorage.removeItem('score')
+    "
+    >
+      Reset Score
+    </button>
   </body>
 
   <script>
+    let score = JSON.parse(localStorage.getItem("score")) || {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      }
 
-    const score = {
-      wins: 0,
-      losses: 0,
-      ties: 0
-    }
+    /* if (!score) {
+      score = {
+        wins: 0,
+        losses: 0,
+        ties: 0
+      }
+    } */
 
     const playGame = (playerMove) => {
       const computerNum = pickPCMove();
@@ -41,11 +53,11 @@
         } else if (computerNum === "Paper") {
           result = "hai perso";
         } else if (computerNum === "Scissors") {
-          result = "hai vinto!";
+          result = "hai vinto";
         }
       } else if (playerMove === "paper") {
         if (computerNum === "Rock") {
-          result = "hai vinto!";
+          result = "hai vinto";
         } else if (computerNum === "Paper") {
           result = "hai pareggiato";
         } else if (computerNum === "Scissors") {
@@ -63,15 +75,17 @@
 
       // Gestione punteggi
 
-      if(result === "hai vinto") {
-        score.wins += 1
+      if (result === "hai vinto") {
+        score.wins += 1;
       }
-      if(result === "hai perso") {
-        score.losses += 1
+      if (result === "hai perso") {
+        score.losses += 1;
       }
-      if(result === "hai pareggiato") {
-        score.ties += 1
+      if (result === "hai pareggiato") {
+        score.ties += 1;
       }
+
+      localStorage.setItem("score", JSON.stringify(score));
 
       alert(
         `Hai scelto ${playerMove}, il computer ha scelto ${computerNum}, quindi ${result}. Vittorie: ${score.wins}, Perse: ${score.losses}, Pareggi: ${score.ties}`
