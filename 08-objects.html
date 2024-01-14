@@ -9,7 +9,7 @@
     
 </body>
 <script>
-    const persona = {
+    /* const persona = {
         name: "Roberta",
         surname: "Rosiello",
         price: 100
@@ -24,6 +24,36 @@
 
     delete persona.price
 
-    console.log(persona);
+    console.log(persona); */
+
+    const product2 = {
+        name: 'shirt',
+        'delivery-time': '1 day',
+        rating: {
+            stars: 4.5,
+            count: 87
+        },
+        fun: test = () => {
+            console.log('Prova')
+        }
+    }
+
+    // console.log(product2['delivery-time'])
+
+    console.log(product2)
+    
+    product2.fun()
+    
+    // Converte Object to JSON
+    const jsonObj = JSON.stringify(product2)
+
+    console.log(jsonObj)
+
+    // Converte JSON in Obj
+    const objToJSON = JSON.parse(jsonObj)
+
+    console.log(objToJSON)
+
+
 </script>
 </html>
