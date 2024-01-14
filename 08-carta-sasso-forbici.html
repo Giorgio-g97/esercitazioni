@@ -16,6 +16,11 @@
     <button onclick="playGame('rock');">Rock</button>
     <button onclick="playGame('paper')">Paper</button>
     <button onclick="playGame('scissors')">Scissors</button>
+    <button onclick="
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+    ">Reset Score</button>
   </body>
 
   <script>
@@ -56,6 +61,8 @@
         }
       }
 
+      // Gestione punteggi
+
       if(result === "hai vinto") {
         score.wins += 1
       }
@@ -67,7 +74,7 @@
       }
 
       alert(
-        `Hai scelto ${playerMove}, il computer ha scelto ${computerNum}, quindi ${result}. Vittore: ${score.wins}, Perse: ${score.losses}, Pareggi: ${score.ties}`
+        `Hai scelto ${playerMove}, il computer ha scelto ${computerNum}, quindi ${result}. Vittorie: ${score.wins}, Perse: ${score.losses}, Pareggi: ${score.ties}`
       );
     };
 
