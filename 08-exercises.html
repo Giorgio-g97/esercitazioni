@@ -112,7 +112,7 @@
 
     // 8h
 
-    let calc = JSON.parse(localStorage.getItem("result")) || ''
+    let calc = localStorage.getItem("result") || ''
 
     const calculation = (num) => {
       if (num) {
@@ -123,7 +123,7 @@
 
     const equal = () => {
       const res = eval(calc);
-      const jsonRes = localStorage.setItem("result", JSON.stringify(res))
+      const jsonRes = localStorage.setItem("result", res)
       console.log(res);
     };
 
