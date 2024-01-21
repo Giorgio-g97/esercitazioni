@@ -6,7 +6,7 @@
     <title>Document</title>
   </head>
   <body>
-    <p>
+    <!-- <p>
       <button onclick=" reset()">AC</button>
       <button onclick="">+/-</button>
       <button onclick="">%</button>
@@ -30,7 +30,12 @@
       <button onclick=" calculation(3)">3</button>
       <button onclick=" calculation('+')">+</button>
       <button onclick=" equal()">=</button>
-    </p>
+    </p> -->
+
+    <!-- 8i -->
+
+    <button onclick="playGame('heads')">heads</button>
+    <button onclick="playGame('tails')">tails</button>
   </body>
 
   <script>
@@ -112,7 +117,7 @@
 
     // 8h
 
-    let calc = localStorage.getItem("result") || ''
+    /*  let calc = localStorage.getItem("result") || ''
 
     const calculation = (num) => {
       if (num) {
@@ -129,6 +134,31 @@
 
     const reset = () => {
       calc = "";
+    }; */
+
+    // 8i
+
+    const playGame = (guess) => {
+      const randNum = Math.random();
+      const res = randNum < 0.5 ? "heads" : "tails";
+      // console.log(res);
+      if (guess === res) {
+        score.win += 1;
+        console.log("You win");
+      } else {
+        score.losses += 1;
+        console.log("You lose");
+      }
+      console.log(`Wins: ${score.win}, Losses: ${score.losses}`);
+
+      localStorage.setItem("score", JSON.stringify(score));
+    };
+
+    // 8j
+
+    let score = JSON.parse(localStorage.getItem("score")) || {
+      win: 0,
+      losses: 0,
     };
   </script>
 </html>
