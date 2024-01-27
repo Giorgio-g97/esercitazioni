@@ -6,6 +6,21 @@
     <title>Document</title>
 </head>
 <body>
-    Prova
+    <button>Prova</button>
+    <button class="second-btn">Second button</button>
 </body>
+
+<script>
+// tramite dot notation accedi all'oggetto document, body e interno HTML
+/*
+    document.body.innerHTML = "Ciao"
+    document.title = "DOM lesson"
+*/
+
+console.log(document.querySelector('button').innerHTML)
+
+console.log(document.querySelector('.second-btn').innerHTML)
+
+</script>
+
 </html>
