@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .amz-btn {
+        background-color: rgb(255, 216, 20);
+      }
+      .is-not-toggled {
+        background-color: black;
+        color: lightgray;
+        border-radius: 24px;
+        border: none;
+        padding: 8px;
+        margin: 10px;
+      }
+      .is-toggled {
+        background-color: lightgray;
+        color: black;
+        border-radius: 24px;
+        border: none;
+        padding: 8px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="amz-btn">Add to Cart</button>
+    <button class="uber-btn-off">Request now</button>
+    <button class="uber-btn-on">Schedule for later</button>
+    <button class="gaming-btn is-not-toggled" onclick="clickGaming()">Gaming</button>
+  </body>
+  <script>
+    const amzBtn = document.querySelector(".amz-btn");
+    // console.log(amzBtn.classList.contains("amz-btn"));
+
+    const clickGaming = () => {
+      gamingBtn = document.querySelector(".gaming-btn");
+      if (gamingBtn.classList.contains("is-not-toggled") === true) {
+        gamingBtn.classList.remove("is-not-toggled");
+        gamingBtn.classList.add("is-toggled");
+      }else{
+        gamingBtn.classList.remove("is-toggled");
+        gamingBtn.classList.add("is-not-toggled");
+      }
+    };
+  </script>
+</html>
