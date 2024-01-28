@@ -58,19 +58,149 @@
 
     <h2>Esercizio Finale 2</h2>
 
-    <input class="input-type" onkeyup="
-        let resultType = document.querySelector('.res-input-type').innerHTML = event.key
-
-
-    "/>
+    <input class="input-type" onkeyup="keyPressUp()" />
     <p class="res-input-type"></p>
+
+    <!-- Esercizio Finale 3 -->
+
+    <h2>Esercizio Finale 3</h2>
+
+    <h1>Cart Quantity</h1>
+
+    <button
+      onclick="document.querySelector('.cart-display').innerHTML = `Cart Quantity: ${cartQuantity}`"
+    >
+      Show quantity
+    </button>
+    <button
+      onclick="
+        updateCartQuantity(1)"
+    >
+      Add Cart
+    </button>
+    <button
+      onclick="
+        updateCartQuantity(2)"
+    >
+      +2
+    </button>
+    <button
+      onclick="
+        updateCartQuantity(3)"
+    >
+      +3
+    </button>
+    <button
+      onclick="
+       updateCartQuantity(4)"
+    >
+      +4
+    </button>
+    <button
+      onclick="
+        updateCartQuantity(5)"
+    >
+      +5
+    </button>
+    <button
+      onclick="
+      updateCartQuantity(-1)"
+    >
+      Remove Cart
+    </button>
+    <button
+      onclick="
+        updateCartQuantity(-2)"
+    >
+      -2
+    </button>
+    <button
+      onclick="
+        updateCartQuantity(-3)"
+    >
+      -3
+    </button>
+    <button
+      onclick="
+        cartQuantity = 0
+        document.querySelector('.cart-display').innerHTML = `Cart Quantity: ${cartQuantity}`"
+    >
+      Reset Cart
+    </button>
+
+    <p class="cart-display"></p>
+
+    <h2>Esercizio Finale 4</h2>
+
+    <p class="calc-result"></p>
+
+    <p>
+      <button onclick=" reset()">AC</button>
+      <button onclick="">+/-</button>
+      <button onclick="">%</button>
+      <button onclick=" calculation('/')">/</button>
+    </p>
+    <p>
+      <button onclick=" calculation(7)">7</button>
+      <button onclick=" calculation(8)">8</button>
+      <button onclick=" calculation(9)">9</button>
+      <button onclick=" calculation('*')">*</button>
+    </p>
+    <p>
+      <button onclick=" calculation(4)">4</button>
+      <button onclick=" calculation(5)">5</button>
+      <button onclick=" calculation(6)">6</button>
+      <button onclick=" calculation('-')">-</button>
+    </p>
+    <p>
+      <button onclick=" calculation(1)">1</button>
+      <button onclick=" calculation(2)">2</button>
+      <button onclick=" calculation(3)">3</button>
+      <button onclick=" calculation('+')">+</button>
+      <button onclick=" equal()">=</button>
+    </p>
   </body>
 
   <script>
+    // Esercizio Finale 4
+
+    let calc = "";
+
+    const calculation = (num) => {
+      if (num) {
+        calc += num;
+        document.querySelector('.calc-result').innerHTML = calc
+      }
+    };
+
+    const equal = () => {
+      const res = eval(calc);
+      document.querySelector('.calc-result').innerHTML = res
+    };
+
+    const reset = () => {
+      calc = "";
+      document.querySelector('.calc-result').innerHTML = calc
+    };
+
+    // Esercizio Finale 3
+
+    const updateCartQuantity = (num) => {
+      cartQuantity += num;
+      document.querySelector(
+        ".cart-display"
+      ).innerHTML = `Cart Quantity: ${cartQuantity}`;
+    };
+
+    let cartQuantity = 0;
 
     // Esercizio finale 2
 
-
+    const keyPressUp = () => {
+      let inputKey = document.querySelector(".input-type").value;
+      let resInputKey = (document.querySelector(".res-input-type").innerHTML =
+        inputKey);
+    };
 
     // Esercizio finale
 
