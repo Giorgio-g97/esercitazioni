@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>9a</button>
+    <button class="second-btn">9b</button>
+
+    <button
+      onclick="
+        document.querySelector('.result').innerHTML = 'You choose Heads'
+        "
+    >
+      heads
+    </button>
+    <button
+      onclick="
+      document.querySelector('.result').innerHTML = 'You choose Tails'
+        "
+    >
+      tails
+    </button>
+    <p class="result"></p>
+
+    <input
+      placeholder="Your name"
+      onkeypress="
+        handleEntername(event);
+    "
+    />
+    <button
+      onclick="
+        displayName();
+    "
+    >
+      Submit
+    </button>
+    <p class="result-name"></p>
+
+    <!-- Final Execercise -->
+
+    <h2>Esercizio Finale</h2>
+
+    <p>Amazon calcolatore di spedizione</p>
+    <p>Ordini inferiori a €40 = +€10 spedizione</p>
+    <p>Ordini superiori a €40 = spedizione gratuita</p>
+
+    <input
+      class="js-input"
+      placeholder="Costo totale dell'ordine"
+      onkeydown="handleEnter(event)"
+    />
+    <button onclick="calcTot()">Calcola</button>
+    <p class="js-cost-result"></p>
+
+    <h2>Esercizio Finale 2</h2>
+
+    <input class="input-type" onkeyup="
+        let resultType = document.querySelector('.res-input-type').innerHTML = event.key
+
+
+    "/>
+    <p class="res-input-type"></p>
+  </body>
+
+  <script>
+
+    // Esercizio finale 2
+
+
+
+    // Esercizio finale
+
+    const handleEnter = (event) => {
+      if (event.key === "Enter") {
+        calcTot();
+      }
+    };
+
+    const calcTot = () => {
+      const costInput = document.querySelector(".js-input");
+
+      // Converto il costo in numero perché querySelector converte automaticamente in stringa
+      let totCost = Number(costInput.value);
+
+      if (totCost < 40) {
+        totCost += 10;
+      }
+
+      const resRounded = Math.round(totCost);
+      document.querySelector(
+        ".js-cost-result"
+      ).innerHTML = `Costo totale: ${resRounded}`;
+    };
+
+    //
+    const displayName = () => {
+      const inputName = document.querySelector("input");
+      let name = inputName.value;
+      document.querySelector(
+        ".result-name"
+      ).innerHTML = `Your name is: ${name}`;
+    };
+
+    handleEntername = (event) => {
+      if (event.key === "Enter") {
+        displayName();
+      }
+    };
+
+    console.log(document.querySelector("button"));
+
+    document.querySelector(".second-btn").innerHTML = "9b done!";
+
+    const displayResult = () => {
+      const inputBtn = document.querySelector("button");
+      if (inputBtn.innerText === "heads") {
+        console.log("Testa");
+      }
+    };
+  </script>
+</html>
