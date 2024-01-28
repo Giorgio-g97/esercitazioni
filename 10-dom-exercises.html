@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 10</title>
+    <style>
+      .yt-btn {
+        border: none;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        border-radius: 50px;
+      }
+      .isSubscribed {
+        background-color: white;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Iscriviti al canale</p>
+
+    <button class="yt-btn" onclick="subscribe()">Iscriviti</button>
+  </body>
+
+  <script>
+    const subscribe = () => {
+      const ytBtn = document.querySelector(".yt-btn");
+      if (ytBtn.innerHTML === "Iscriviti") {
+        ytBtn.innerHTML = "Iscritto";
+        ytBtn.classList.add('isSubscribed')
+      } else {
+        ytBtn.innerHTML = "Iscriviti";
+        ytBtn.classList.remove('isSubscribed')
+      }
+    };
+  </script>
+</html>
