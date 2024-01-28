@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <p>Iscriviti al canale</p>
 
-    <button
-     class="yt-btn"
-     onclick="
-     const ytBtn = document.querySelector('.yt-btn')
-     if(ytBtn.innerHTML === 'Iscriviti'){
-        ytBtn.innerHTML = 'Iscritto'
-     }else{
-        ytBtn.innerHTML = 'Iscriviti'
-     }
-     "
-    >Iscriviti</button>
-</body>
+    <button class="yt-btn" onclick="subscribe()">Iscriviti</button>
+  </body>
 
-<script>
+  <script>
+    const subscribe = () => {
+      const ytBtn = document.querySelector(".yt-btn");
+      if (ytBtn.innerHTML === "Iscriviti") {
+        ytBtn.innerHTML = "Iscritto";
+      } else {
+        ytBtn.innerHTML = "Iscriviti";
+      }
+    };
+
     // Video a 6h26m
-</script>
-
+  </script>
 </html>
