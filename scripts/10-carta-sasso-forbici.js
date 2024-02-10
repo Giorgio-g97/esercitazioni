@@ -5,10 +5,10 @@ let score = JSON.parse(localStorage.getItem("score")) || {
     ties: 0,
   };
 
-  updateScore();
+   updateScore();
 
   const playGame = (playerMove) => {
-    let computerNum = pickPCMove();
+    let computerNum = PCMove();
     let result = "";
 
     if (playerMove === "rock") {
@@ -85,7 +85,8 @@ let score = JSON.parse(localStorage.getItem("score")) || {
     ).innerHTML = `Vittorie: ${score.wins}, Perse: ${score.losses}, Pareggi: ${score.ties}`;
   }
 
-  const pickPCMove = () => {
+// PC genera numero randomico
+  const PCMove = () => {
     // Variabile salvata all'interno dello scope funzione
     let computerNum = "";
 
