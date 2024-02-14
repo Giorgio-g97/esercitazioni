@@ -8,7 +8,7 @@
       .amz-btn {
         background-color: rgb(255, 216, 20);
       }
-      .is-not-toggled {
+      .btn-toggled {
         background-color: black;
         color: lightgray;
         border-radius: 24px;
@@ -19,31 +19,35 @@
       .is-toggled {
         background-color: lightgray;
         color: black;
-        border-radius: 24px;
-        border: none;
-        padding: 8px;
-        margin: 10px;
       }
     </style>
   </head>
   <body>
-    <button class="amz-btn">Add to Cart</button>
-    <button class="uber-btn-off">Request now</button>
-    <button class="uber-btn-on">Schedule for later</button>
-    <button class="gaming-btn is-not-toggled" onclick="clickGaming()">Gaming</button>
+    <button class="gaming-btn btn-toggled" onclick="clickGaming('gaming-btn')">
+      Gaming
+    </button>
+    <button class="music-btn btn-toggled" onclick="clickGaming('music-btn')">
+      Music
+    </button>
+    <button class="tech-btn btn-toggled" onclick="clickGaming('tech-btn')">
+      Tech
+    </button>
   </body>
   <script>
-    const amzBtn = document.querySelector(".amz-btn");
-    // console.log(amzBtn.classList.contains("amz-btn"));
-
-    const clickGaming = () => {
-      gamingBtn = document.querySelector(".gaming-btn");
-      if (gamingBtn.classList.contains("is-not-toggled") === true) {
-        gamingBtn.classList.remove("is-not-toggled");
+    const clickGaming = (btn) => {
+      gamingBtn = document.querySelector(`.${btn}`);
+      if (!gamingBtn.classList.contains("is-toggled")) {
+        offPrevBtn();
         gamingBtn.classList.add("is-toggled");
-      }else{
+      } else {
         gamingBtn.classList.remove("is-toggled");
-        gamingBtn.classList.add("is-not-toggled");
+      }
+    };
+
+    const offPrevBtn = () => {
+      prevBtn = document.querySelector(".is-toggled");
+      if (prevBtn) {
+        prevBtn.classList.remove("is-toggled");
       }
     };
   </script>
