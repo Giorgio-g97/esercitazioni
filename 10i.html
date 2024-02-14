@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calcolatrice finale</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+      }
+      button {
+        background-color: rgb(51, 51, 51);
+        color: white;
+        height: 60px;
+        width: 60px;
+        border-radius: 60px;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .operators {
+        background-color: rgb(254, 160, 10);
+        color: white;
+        height: 60px;
+        width: 60px;
+        border-radius: 60px;
+        border: none;
+        font-size: 26px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+
+      .calc-result {
+        font-size: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calc-result"><p> </p></div>
+
+    <p>
+      <button onclick=" reset()">AC</button>
+      <button onclick="">+/-</button>
+      <button onclick="">%</button>
+      <button class="operators" onclick=" calculation('/')">/</button>
+    </p>
+    <p>
+      <button onclick=" calculation(7)">7</button>
+      <button onclick=" calculation(8)">8</button>
+      <button onclick=" calculation(9)">9</button>
+      <button class="operators" onclick=" calculation('*')">*</button>
+    </p>
+    <p>
+      <button onclick=" calculation(4)">4</button>
+      <button onclick=" calculation(5)">5</button>
+      <button onclick=" calculation(6)">6</button>
+      <button class="operators" onclick=" calculation('-')">-</button>
+    </p>
+    <p>
+      <button onclick=" calculation(1)">1</button>
+      <button onclick=" calculation(2)">2</button>
+      <button onclick=" calculation(3)">3</button>
+      <button class="operators" onclick=" calculation('+')">+</button>
+      <button class="operators" onclick=" equal()">=</button>
+    </p>
+  </body>
+
+  <script>
+    let calc = "";
+
+    const calculation = (num) => {
+      if (num) {
+        calc += num;
+        document.querySelector(".calc-result").innerHTML = calc;
+      }
+    };
+
+    const equal = () => {
+      const res = eval(calc);
+      document.querySelector(".calc-result").innerHTML = res;
+    };
+
+    const reset = () => {
+      calc = "";
+      document.querySelector(".calc-result").innerHTML = calc;
+    };
+  </script>
+</html>

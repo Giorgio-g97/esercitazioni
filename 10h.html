@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 10</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+      .yt-btn {
+        border: none;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+        border-radius: 50px;
+      }
+      .isSubscribed {
+        background-color: lightgray;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Esercizio Finale</h2>
+
+    <p>Amazon calcolatore di spedizione</p>
+    <p>Ordini inferiori a €40 = +€10 spedizione</p>
+    <p>Ordini superiori a €40 = spedizione gratuita</p>
+
+    <input
+      class="js-input"
+      placeholder="Costo totale dell'ordine"
+      onkeydown="handleEnter(event)"
+    />
+    <button onclick="calcTot()">Calcola</button>
+    <p class="js-cost-result"></p>
+  </body>
+
+  <script>
+    const handleEnter = (event) => {
+      if (event.key === "Enter") {
+        calcTot();
+      }
+    };
+
+    const calcTot = () => {
+      const costInput = document.querySelector(".js-input");
+
+      // Converto il costo in numero perché querySelector converte automaticamente in stringa
+      let totCost = Number(costInput.value);
+      if (totCost <= 0){
+        document.querySelector(
+        ".js-cost-result"
+      ).innerHTML = "L'importo non può essere inferiore o uguale a zero!";
+      return;
+      }
+      else if (totCost < 40) {
+        totCost += 10;
+      }
+
+      const resRounded = Math.round(totCost);
+      document.querySelector(
+        ".js-cost-result"
+      ).innerHTML = `Costo totale: ${resRounded}`;
+    };
+  </script>
+</html>
