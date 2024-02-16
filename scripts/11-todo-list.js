@@ -1,13 +1,16 @@
-const arrayList = ['wake up'];
+const arrayList = ["watch youtube", "dinner"];
 
-// Ora 9h
+const updateList = () => {
+  let pHTML = "";
+  for (let i = 0; i < arrayList.length; i++) {
+    const task = arrayList[i]; // scorriamo array
+    const html = `<p>${task}</p>`; // creiamo html
+    pHTML += html; // salviamo in var.
+    document.querySelector(".js-todolist").innerHTML = pHTML;// modifichiamo il div inserendo l'html
+  }
+};
 
-for(let i= 0; i < arrayList.length; i++){
-  const task = arrayList[i];
-  const html = `<p>${task}</p>`
-  const resTask = document.querySelector('.js-todolist').innerHTML
-  resTask += html
-}
+updateList();
 
 const addList = () => {
   const inputName = document.querySelector(".input-js");
@@ -15,4 +18,5 @@ const addList = () => {
   arrayList.push(inputName.value);
   console.log(arrayList);
   inputName.value = "";
+  updateList();
 };
