@@ -114,7 +114,49 @@
     //11l
 
     /* const minMax = (nums) => {
-      for(i=0;)
-    } */
+      const res = {
+        min: null,
+        max: null
+      };
+
+      for (i = 0; i < nums.length; i++) {
+        const num = nums[i];
+
+        if (res.max === null || num > res.max) {
+          res.max = num
+        }
+        if(res.min === null || num < res.min)[
+          res.min=num
+        ]
+      }
+
+      return res;
+    };
+
+    console.log(minMax([1,2,3])); */
+
+    //11n
+
+    const countWords = (words) => {
+      
+      const res = {}
+
+      for(i=0;i<words.length;i++){
+        const word = words[i]
+        
+        if(!res[word]){
+          console.log(res[word]= word)
+        }
+
+        /* if(!res[word]){
+          res[word]= 1;
+        }else{
+          res[word]++
+        } */
+      }
+      return res;
+    }
+
+    countWords(['ciao', 'prova', 'prova'])
   </script>
 </html>
