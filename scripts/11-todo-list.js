@@ -4,7 +4,7 @@ const updateList = () => {
   let pHTML = "";
   for (let i = 0; i < arrayList.length; i++) {
     const task = arrayList[i]; // scorriamo array
-    const html = `<p>${task}</p>`; // creiamo html
+    const html = `<p>${task} <button>Delete</button></p>`; // creiamo html
     pHTML += html; // salviamo in var.
     document.querySelector(".js-todolist").innerHTML = pHTML;// modifichiamo il div inserendo l'html
   }
