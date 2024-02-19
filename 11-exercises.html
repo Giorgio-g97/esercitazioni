@@ -144,21 +144,15 @@
       for(i=0;i<words.length;i++){
         const word = words[i]
 
-        console.log(res[word])
-        
-       /*  if(!res[word]){
-          console.log(res[word]= word)
-        } */
-
-        /* if(!res[word]){
+        if(!res[word]){ // Se non è ancora inserita la parola nell'oggetto, inseriscila e rendila uguale a 1
           res[word]= 1;
-        }else{
+        }else{ // Altrimenti se è già presente, incrementa il count
           res[word]++
-        } */
+        }
       }
       return res;
     }
 
-    countWords(['ciao', 'prova', 'prova'])
+    console.log(countWords(['p', 'p', 'b']))
   </script>
 </html>
