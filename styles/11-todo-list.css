@@ -5,11 +5,29 @@ body {
 .todo-grid {
     display: grid;
     grid-template-columns: 200px 150px 100px;
+    column-gap: 10px;
+    row-gap: 10px;
+    align-items: center;
 }
 
-/* .add-btn {
+input {
+    font-size: 15px;
+    padding: 6px;
+    align-items: stretch;
+}
+
+.add-btn {
     background-color: green;
     border: none;
+    border-radius: 5px;
     color: white;
-    padding: 10px, 20px;
-} */
+    padding: 10px;
+}
+
+.del-btn {
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 0px;
+}

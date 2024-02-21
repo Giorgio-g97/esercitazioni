@@ -13,18 +13,17 @@ const updateList = () => {
     // const date = taskObj.date;
     const { name, date } = taskObj; // structuring, estrapola name dall'oggetto e la salva in una variabile con lo stesso nome
     const html = `
-    <div>${name}</div>
-    <div>${date}</div>
-    ${name} ${date} 
-    <button onclick="
-      arrayList.splice(${i}, 1);
-      updateList();
-    "
-    >Delete</button>
-    `; // creiamo html
+      <div>${name}</div>
+      <div>${date}</div>
+      <button class="del-btn" onclick="
+        arrayList.splice(${i}, 1);
+        updateList();
+      "
+      >Delete</button>
+      `; // creiamo html
     pHTML += html; // salviamo in var.
     document.querySelector(".js-todolist").innerHTML = pHTML; // modifichiamo il div inserendo l'html
-  };
+  }
 };
 
 updateList();
