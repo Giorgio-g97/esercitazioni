@@ -44,10 +44,12 @@
     // 11r/11s
 
     const removeEgg = (foods) => {
+
+      const revFoods = foods.reverse() // 11t
       const res = [];
       let counter = 0;
-      for (i = 0; i < foods.length; i++) {
-        const food = foods[i];
+      for (i = 0; i < revFoods.length; i++) {
+        const food = revFoods[i];
         if (food === "egg" && counter !== 2) {
           counter++;
           continue;
