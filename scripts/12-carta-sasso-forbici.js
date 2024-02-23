@@ -5,11 +5,18 @@ let score = JSON.parse(localStorage.getItem("score")) || {
   ties: 0,
 };
 
+isAutoPlaying = false;
+
 const autoPlay = () => {
-  setInterval(() => {
-    const playerRand = PCMove();
-    playGame(playerRand);
-  }, 1000);
+  if (isAutoPlaying === false) {
+    setInterval(() => {
+      const playerRand = PCMove(); // 10:45h
+      playGame(playerRand);
+    }, 1000);
+    isAutoPlaying = true
+  }else{
+    isAutoPlaying = false
+  }
 };
 
 updateScore();
