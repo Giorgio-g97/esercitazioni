@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="/esercitazioni/styles/10-carta-sasso-forbici.css">
+  </head>
+  <body>
+    <h1 class="title">Rock, Paper, Scissors</h1>
+
+    <!-- Quando clicchi sul bottone:
+1. Genera Carta, Forbici, Sasso random dal pc
+2. Compara con quello che Hai selezionato
+3. Visualizza il risultato
+-->
+    <button class="move-icon" onclick="playGame('rock');">✊</button>
+    <button class="move-icon" onclick="playGame('paper')">✋</button>
+    <button class="move-icon" onclick="playGame('scissors') ">✌️</button>
+
+    <p class="js-result result-css"></p>
+
+    <p class="js-move"></p>
+
+    <p class="js-score"></p>
+
+    <button
+      onclick="
+      score.wins = 0;
+      score.losses = 0;
+      score.ties = 0;
+      localStorage.removeItem('score')
+      updateScore();
+    "
+    >
+      Reset Score
+    </button>
+  </body>
+
+  <script src="/esercitazioni/scripts/10-carta-sasso-forbici.js"></script>
+</html>
