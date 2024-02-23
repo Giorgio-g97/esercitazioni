@@ -1,9 +1,4 @@
-const arrayList = [
-  {
-    name: "wash dishes",
-    date: "2024-02-21",
-  },
-];
+const arrayList = JSON.parse(localStorage.getItem('arrayList')) || [];
 
 const updateList = () => {
   let pHTML = "";
@@ -21,9 +16,9 @@ const updateList = () => {
       "
       >Delete</button>
       `; // creiamo html
-    pHTML += html; // salviamo in var.
+      pHTML += html; // salviamo in var.
+    }
     document.querySelector(".js-todolist").innerHTML = pHTML; // modifichiamo il div inserendo l'html
-  }
 };
 
 updateList();
@@ -33,7 +28,7 @@ const addList = () => {
   const inputDate = document.querySelector(".js-date-input");
   const name = inputName.value;
   const date = inputDate.value;
-  arrayList.push({
+  arrayList.push({ // pusha i valori nell'array
     // name: inputName.value,
     // date: inputDate.value
     name, // shorthand, valore e prop hanno stesso nome
@@ -42,4 +37,9 @@ const addList = () => {
   inputName.value = "";
   inputDate.value = "";
   updateList();
+  saveLocalStorage();
 };
+
+const saveLocalStorage = () => {
+  localStorage.setItem('arrayList', JSON.stringify(arrayList))
+}
