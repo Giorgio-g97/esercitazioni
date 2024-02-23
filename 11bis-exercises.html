@@ -89,24 +89,32 @@
 
     // 11w
 
-    const findIndex = (arr, word) => {
+    /* const findIndex = (arr, word) => {
       let index = -1;
       for (i = 0; i < arr.length; i++) {
         const string = arr[i];
         if (string === word) {
           index = i;
-          break;
         }
       }
       return index;
     };
 
     const unique = (arr) => {
-        
+       const res = []
+       
+       for(i=0;i<arr.length;i++){
+        const string = arr[i]
+        if(findIndex(res,string) === -1){
+          res.push(string)
+        }
+       }
+       return res;
     };
 
-    const arr2 = ["prova", "tech", "giorgio"];
+    const arr2 = ["prova", "giorgio", "tech", "giorgio"];
 
-    console.log(findIndex(arr2, "giorgio"));
+    console.log(unique(arr2)) */
+
   </script>
 </html>
