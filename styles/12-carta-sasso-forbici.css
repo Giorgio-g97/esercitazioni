@@ -21,3 +21,11 @@ body {
     font-weight: bold;
     margin: 30px;
   }
+
+  .score-btn {
+    border: none;
+    background-color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0px 10px;
+  }
