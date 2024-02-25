@@ -5,17 +5,21 @@ let score = JSON.parse(localStorage.getItem("score")) || {
   ties: 0,
 };
 
-isAutoPlaying = false;
+let isAutoPlaying = false;
+
+let intervalId;
 
 const autoPlay = () => {
-  if (isAutoPlaying === false) {
-    setInterval(() => {
+  if (!isAutoPlaying) {
+    intervalId = setInterval(() => { // il setInterval genera un ID
       const playerRand = PCMove(); // 10:45h
       playGame(playerRand);
     }, 1000);
+    console.log(intervalId)
     isAutoPlaying = true
   }else{
-    isAutoPlaying = false
+    clearInterval(intervalId) // stop interval prendendo l'ultimo ID
+    isAutoPlaying = false;
   }
 };
 
