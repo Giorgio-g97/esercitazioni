@@ -8,9 +8,23 @@
   <body></body>
   <script>
 
-    setTimeout(function() {
+/*     setTimeout(function() {
         console.log('timeout')
-    }, 3000) // in ms
+    }, 3000) // in ms */
+
+// forEach
+
+    [
+      'make dinner',
+      'wash dishes',
+      'watch youtube'
+    ].forEach(function (value, index) {
+      if(value === 'wash dishes'){
+        return; // stessa funzione di continue in for loop
+      }
+      console.log(value);
+    })
+
 
   </script>
 </html>
