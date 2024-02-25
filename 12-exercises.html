@@ -6,9 +6,94 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <button
+    class="start-btn"
+        onclick="oneSecond()"
+    >Start</button>
+
+    <button
+        class="cart-btn"
+        onclick="addToCart()"
+    >Add to cart</button>
+
+    <p class="cart-text"></p>
+
+    <button
+        onclick="addMess()"
+    >Add</button>
+    <button
+        onclick="removeMess()"
+    >Remove</button>
 </body>
 <script>
+
+    // 12a
+
+    let add = function () {
+        console.log(2+3);
+    }
+
+  /*   add();
+    add(); */
     
+    // 12b
+
+    function runTwice(fun) {
+        fun()
+        fun()
+    }
+
+    runTwice(add)
+
+    // 12c/12d
+
+    function oneSecond() {
+        btn = document.querySelector('.start-btn')
+        btn.innerHTML = 'Loading...' // 12d
+        setTimeout(function() {
+            btn.innerHTML = 'Finished'
+        }, 1000)
+    }
+
+    // 12e/12f
+
+    let timerId; // 12f
+
+    function addToCart() {
+        clearTimeout(timerId); 
+        text = document.querySelector('.cart-text')
+        text.innerHTML = 'Added'
+        timerId = setTimeout(function() {
+            text.innerHTML = ''
+        }, 2000)
+        console.log(timerId);
+    }
+
+    // 12g
+
+    let messages = 0 //12h
+
+    function addMess(){
+        messages++;
+    }
+
+    function removeMess(){
+        messages--;
+    }
+
+    function refreshTitle() {
+        setInterval(function(){
+            if(messages <= 0){ //12i
+                document.title = 'Document';
+            }else if(document.title === `(${messages}) New messages`){
+                document.title = 'Document'
+            }else{
+                document.title = `(${messages}) New messages`
+            }
+        }, 1000)
+    }
+
+    refreshTitle()
+
 </script>
 </html>
