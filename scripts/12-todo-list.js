@@ -8,18 +8,27 @@ const updateList = () => {
     const html = `
       <div>${name}</div>
       <div>${date}</div>
-      <button class="del-btn" onclick="
-        arrayList.splice(${index}, 1);
-        updateList();
-      "
-      >Delete</button>
+      <button class="del-btn">Delete</button>
       `; // creiamo html
       pHTML += html; // salviamo in var.
   })
     document.querySelector(".js-todolist").innerHTML = pHTML; // modifichiamo il div inserendo l'html
+
+    document.querySelectorAll('.del-btn')// prendi tutti i del-btn generati
+      .forEach((delBtn, index) => {// scorri con forEach
+        delBtn.addEventListener('click', () => {// aggiungi un eventListener
+          arrayList.splice(index, 1);// esegui il codice
+          updateList();
+        })
+      })
 };
 
 updateList();
+
+document.querySelector('.add-btn')
+  .addEventListener('click', () => {
+    addList();
+  })
 
 const addList = () => {
   const inputName = document.querySelector(".input-js");
