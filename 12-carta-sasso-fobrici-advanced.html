@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
-    <link rel="stylesheet" href="styles/12-carta-sasso-forbici.css">
+    <link rel="stylesheet" href="styles/12-carta-sasso-forbici.css" />
   </head>
   <body>
     <h1 class="title">Rock, Paper, Scissors</h1>
@@ -14,9 +14,9 @@
 2. Compara con quello che Hai selezionato
 3. Visualizza il risultato
 -->
-    <button class="move-icon" onclick="playGame('Rock');">✊</button>
-    <button class="move-icon" onclick="playGame('Paper')">✋</button>
-    <button class="move-icon" onclick="playGame('Scissors') ">✌️</button>
+    <button class="move-icon rock-btn">✊</button>
+    <button class="move-icon paper-btn">✋</button>
+    <button class="move-icon scissors-btn">✌️</button>
 
     <p class="js-result result-css"></p>
 
@@ -24,23 +24,9 @@
 
     <p class="js-score"></p>
 
-    <button
-      class="score-btn"
-      onclick="
-      score.wins = 0;
-      score.losses = 0;
-      score.ties = 0;
-      localStorage.removeItem('score')
-      updateScore();
-    "
-    >
-      Reset Score
-    </button>
+    <button class="score-btn">Reset Score</button>
 
-    <button
-      class="score-btn"
-      onclick="autoPlay()"
-    >Auto Play</button>
+    <button class="score-btn autoplay-btn">Auto Play</button>
   </body>
 
   <script src="scripts/12-carta-sasso-forbici.js"></script>
