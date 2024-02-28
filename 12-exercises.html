@@ -6,24 +6,14 @@
     <title>Document</title>
   </head>
   <body>
-    <!-- <button
-    class="start-btn"
-        onclick="oneSecond()"
-    >Start</button>
+    <button class="start-btn">Start</button>
 
-    <button
-        class="cart-btn"
-        onclick="addToCart()"
-    >Add to cart</button>
+    <button class="cart-btn">Add to cart</button>
 
     <p class="cart-text"></p>
 
-    <button
-        onclick="addMess()"
-    >Add</button>
-    <button
-        onclick="removeMess()"
-    >Remove</button> -->
+    <button class="add-btn">Add</button>
+    <button class="rem-btn">Remove</button>
   </body>
   <script>
     // 12a
@@ -46,53 +36,76 @@
 
     // 12c/12d
 
-    /*  function oneSecond() {
-        btn = document.querySelector('.start-btn')
-        btn.innerHTML = 'Loading...' // 12d
-        setTimeout(function() {
-            btn.innerHTML = 'Finished'
-        }, 1000)
-    } */
+    const startBtn = document.querySelector(".start-btn");
+
+    startBtn.addEventListener("click", () => {
+        oneSecond()
+    });
+
+    const oneSecond = () => {
+      btn = document.querySelector(".start-btn");
+      btn.innerHTML = "Loading..."; // 12d
+      setTimeout(() => {
+        btn.innerHTML = "Finished";
+      }, 1000);
+    };
 
     // 12e/12f
 
-    /*  let timerId; // 12f
+    let timerId; // 12f
 
-    function addToCart() {
-        clearTimeout(timerId); 
-        text = document.querySelector('.cart-text')
-        text.innerHTML = 'Added'
-        timerId = setTimeout(function() {
-            text.innerHTML = ''
-        }, 2000)
-        console.log(timerId);
-    } */
+    const cartBtn = document.querySelector('.cart-btn')
+    cartBtn.addEventListener('click', () => {
+        addToCart();
+    })
+
+    const addToCart = () => {
+      clearTimeout(timerId);// cancella l'ultimo timer tramite id
+      text = document.querySelector(".cart-text");
+      text.innerHTML = "Added";
+// ritorna un id alla funzione timer
+      timerId = setTimeout(() => {
+        text.innerHTML = "";
+      }, 2000);
+      console.log(timerId);
+    };
 
     // 12g
 
-    /*  let messages = 0 //12h
+    let messages = 0; //12h
 
-    function addMess(){
-        messages++;
-    }
+    const addBtn = document.querySelector('.add-btn')
+    addBtn.addEventListener('click', () => {
+        addMess();
+    })
 
-    function removeMess(){
-        messages--;
-    }
+    const addMess = () => {
+      messages++;
+    };
 
-    function refreshTitle() {
-        setInterval(function(){
-            if(messages <= 0){ //12i
-                document.title = 'Document';
-            }else if(document.title === `(${messages}) New messages`){
-                document.title = 'Document'
-            }else{
-                document.title = `(${messages}) New messages`
-            }
-        }, 1000)
-    }
+    const remBtn = document.querySelector('.rem-btn')
+    remBtn.addEventListener('click', () => {
+        removeMess();
+    })
 
-    refreshTitle() */
+    const removeMess = () => {
+      messages--;
+    };
+
+    const refreshTitle = () => {
+      setInterval(function () {
+        if (messages <= 0) {
+          //12i
+          document.title = "Document";
+        } else if (document.title === `(${messages}) New messages`) {
+          document.title = "Document";
+        } else {
+          document.title = `(${messages}) New messages`;
+        }
+      }, 1000);
+    };
+
+    refreshTitle();
 
     // 12j/12k
 
@@ -125,7 +138,7 @@
 
     //12n/12o
 
-    const removeEgg = (foods) => {
+    /* const removeEgg = (foods) => {
       let count = 0;
       return foods.filter((value) => {// filtra i cibi
         if (value === "egg" && count < 2) {// se soddisfa i requisiti
@@ -136,6 +149,8 @@
       });
     };
 
-    console.log(removeEgg(["pane", "egg", "latte", "egg", "cavolo", "egg"]));
+    console.log(removeEgg(["pane", "egg", "latte", "egg", "cavolo", "egg"])); */
+
+    //
   </script>
 </html>
