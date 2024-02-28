@@ -5,45 +5,43 @@ startBtn.addEventListener("click", () => {
 });
 
 let intervalId = null;
-let seconds = 0;
-let minutes = 0;
-let hours = 0;
+let [seconds, minutes, hours] = [0, 0, 0];
 let isTimerStarted;
-let timerDisplay = null;
+let timerDisplay = document.querySelector(".time");
+
+const incremSeconds = () => {
+  seconds++;
+  if (seconds === 60) {
+    seconds = 0;
+    minutes++;
+  }
+  if (minutes === 60) {
+    minutes = 0;
+    hours++;
+  }
+
+//Controllo: se numero<10, allora 00, altrimenti numero >= 10
+  let h = hours < 10 ? '0' + hours : hours 
+  let m = minutes < 10 ? '0' + minutes : minutes 
+  let s = seconds < 10 ? '0' + seconds : seconds 
+
+  timerDisplay.innerHTML = `Time: ${h}:${m}:${s}`;
+};
 
 const startTimer = () => {
   if (!isTimerStarted) {
     isTimerStarted = true;
-    timerDisplay = document.querySelector(".time");
-    if(seconds <= 9){
-      seconds = '0' + seconds;
-      seconds++
-    }else if(seconds >= 59){
-      seconds = 0;
-      hours++;
-    }
-    // seconds++;
-    startBtn.innerHTML = 'Stop'
-    timerDisplay.innerHTML = `Time: ${hours}:${minutes}:${seconds}`;
-    // console.log('start');
-    intervalId = setInterval(() => {
-      seconds++;
-      // console.log(seconds);
-      timerDisplay.innerHTML = `Time: ${hours}:${minutes}:${seconds}`;
-    }, 1000);
-  }else if(isTimerStarted === true){
+    startBtn.innerHTML = "Stop";
+    intervalId = setInterval(incremSeconds, 1000);
+  } else if (isTimerStarted === true) {
     isTimerStarted = false;
-    startBtn.innerHTML = 'Start'
-    stopTimer();
+    startBtn.innerHTML = "Start";
+    clearInterval(intervalId);
   }
 };
 
-function stopTimer() {
-  clearInterval(intervalId);
-};
-
-const resBtn = document.querySelector('.res-btn')
-resBtn.addEventListener('click', () => {
+const resBtn = document.querySelector(".res-btn");
+resBtn.addEventListener("click", () => {
   seconds = 0;
   timerDisplay.innerHTML = `Time: 00:00:00`;
-})
+});
