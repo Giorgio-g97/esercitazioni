@@ -40,8 +40,8 @@ const startGame = () => {
 const playGame = (cell, index) => {
   if (move === "X") {
     cell.textContent = "X";
-    gameState[index] = move;
-    checkWin();
+    gameState[index] = move;// salva la mossa nell'indice preciso 
+    setTimeout(checkWin, 100)
     // gameOver();
     move = "O";
     statusPlayer.textContent = `E' il turno di: ${move}`;
@@ -58,24 +58,20 @@ function checkWin() {
   let roundWin = false;
   for (i = 0; i < winnerComb.length; i++) {
     const win = winnerComb[i];
-    let a = gameState[win[0]];
+    let a = gameState[win[0]];// salva gli stati cliccati precedentemente in 3 variabili
     let b = gameState[win[1]];
     let c = gameState[win[2]];
     if (a === "" || b === "" || c === "") {
       continue;
     }
-    if (a === b && b === c) {
+    if (a === b && b === c) {// se queste 3 variabili sono uguali (tutti "x" o "o")
       roundWin = true;
-      console.log(`${move} ha vinto`);
       restartGame();
-      break;
+      alert(`${move} ha vinto`);
+      // break;
     }
   }
 }
-
-// function gameOver() {
-//   if(roundWin === true)
-// }
 
 const restartGame = () => {
   move = "X";
