@@ -41,14 +41,14 @@ const playGame = (cell, index) => {
   if (move === "X") {
     cell.textContent = "X";
     gameState[index] = move;// salva la mossa nell'indice preciso 
-    setTimeout(checkWin, 100)
+    setTimeout(checkWin, 100);
     // gameOver();
     move = "O";
     statusPlayer.textContent = `E' il turno di: ${move}`;
   } else if (move === "O") {
     gameState[index] = move;
     cell.textContent = "O";
-    checkWin();
+    setTimeout(checkWin, 100);
     move = "X";
     statusPlayer.textContent = `E' il turno di: ${move}`;
   }
