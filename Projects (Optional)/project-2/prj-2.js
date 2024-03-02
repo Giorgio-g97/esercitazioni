@@ -4,6 +4,8 @@ const statusPlayer = document.querySelector(".statusPlayer");
 
 const cells = document.querySelectorAll(".cell");
 
+const winP = document.querySelector(".winP");
+
 let gameState = ["", "", "", "", "", "", "", "", ""];
 
 let move = "X";
@@ -40,15 +42,14 @@ const startGame = () => {
 const playGame = (cell, index) => {
   if (move === "X") {
     cell.textContent = "X";
-    gameState[index] = move;// salva la mossa nell'indice preciso 
-    setTimeout(checkWin, 100);
-    // gameOver();
+    gameState[index] = move; // salva la mossa nell'indice preciso
+    checkWin();
     move = "O";
     statusPlayer.textContent = `E' il turno di: ${move}`;
   } else if (move === "O") {
-    gameState[index] = move;
     cell.textContent = "O";
-    setTimeout(checkWin, 100);
+    gameState[index] = move;
+    checkWin();
     move = "X";
     statusPlayer.textContent = `E' il turno di: ${move}`;
   }
@@ -58,23 +59,27 @@ function checkWin() {
   let roundWin = false;
   for (i = 0; i < winnerComb.length; i++) {
     const win = winnerComb[i];
-    let a = gameState[win[0]];// salva gli stati cliccati precedentemente in 3 variabili
+    let a = gameState[win[0]]; // salva gli stati cliccati precedentemente in 3 variabili a, b e c
     let b = gameState[win[1]];
     let c = gameState[win[2]];
     if (a === "" || b === "" || c === "") {
       continue;
     }
-    if (a === b && b === c) {// se queste 3 variabili sono uguali (tutti "x" o "o")
+    if (a === b && b === c) {
+      // se queste 3 variabili sono uguali (tutti "x" o "o")
       roundWin = true;
-      restartGame();
-      alert(`${move} ha vinto`);
-      // break;
+      winP.innerHTML = `<h1>${move} ha vinto!</h1>
+      <h3>Prossimo turno tra 3 secondi</h3>`;
+      setTimeout(() => {
+        restartGame();
+      }, 3000);
     }
   }
 }
 
 const restartGame = () => {
   move = "X";
+  winP.textContent = "";
   cells.forEach((cell) => {
     cell.textContent = "";
     gameState = ["", "", "", "", "", "", "", "", ""];
