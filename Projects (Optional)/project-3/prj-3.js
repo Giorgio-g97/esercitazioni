@@ -2,20 +2,30 @@ const arrayList = JSON.parse(localStorage.getItem("arrayList")) || [];
 
 const todoList = document.querySelector(".js-todolist");
 
-const updateList = () => {
+document.querySelector(".add-btn").addEventListener("click", () => {
+  addList();
+});
+
+updateList();
+
+function updateList() {
   let pHTML = "";
 
-  arrayList.forEach(function (taskObj, index) {
+  arrayList.forEach((taskObj) => {
     const { name, date } = taskObj; // destructuring, estrapola name dall'oggetto e la salva in una variabile con lo stesso nome
     const html = `
       <div>${name}</div>
       <div>${date}</div>
-      <button class="del-btn">Delete</button>
+      <div class="delCheckBtn">
+        <button class="del-btn">Delete</button>
+        <input class="inputCheck" type="checkbox">
+      <div>
       `; // creiamo html
     pHTML += html; // salviamo in var.
   });
   todoList.innerHTML = pHTML; // modifichiamo il div inserendo l'html
 
+//Gestione Del Btn
   document
     .querySelectorAll(".del-btn") // prendi tutti i del-btn generati
     .forEach((delBtn, index) => {
@@ -24,15 +34,19 @@ const updateList = () => {
         // aggiungi un eventListener
         arrayList.splice(index, 1); // esegui il codice
         updateList();
+        saveLocalStorage();
       });
     });
+
+//Gestione CheckBtn
+document.querySelectorAll(".inputCheck").forEach((checkBtn, index) => {
+  checkBtn.addEventListener('click', () => {
+    console.log('checked')
+    todoList.classList.add('checked')
+  })
+})
 };
 
-updateList();
-
-document.querySelector(".add-btn").addEventListener("click", () => {
-  addList();
-});
 
 const addList = () => {
   const inputName = document.querySelector(".input-js");
