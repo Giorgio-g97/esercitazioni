@@ -6,17 +6,11 @@ const cells = document.querySelectorAll(".cell");
 
 const winP = document.querySelector(".winP");
 
-let gameState = ["", "", "", "", "", "", "", "", ""];
+let gameState = ["", "", "", "", "", "", "", "", ""];// tabellone dove salvare le mosse
 
-let move = "X";
+let move = "X";// Si inizia con il turno di "x"
 
-let isGameActive = true;
-
-const playerXWon = "Player X Won";
-const playerOWon = "Player O Won";
-const tie = "Tie";
-
-const winnerComb = [
+const winnerComb = [// Tutte le combinazioni vincenti
   [0, 1, 2],
   [3, 4, 5],
   [6, 7, 8],
@@ -27,23 +21,21 @@ const winnerComb = [
   [2, 4, 6],
 ];
 
-let pMove;
-
 statusPlayer.innerHTML = `E' il turno di: ${move}`;
 
 const startGame = () => {
-  cells.forEach((cell, index) => {
-    cell.addEventListener("click", () => {
+  cells.forEach((cell, index) => {// itera le celle
+    cell.addEventListener("click", () => {//al click avvia la funzione
       playGame(cell, index);
     });
   });
 };
 
 const playGame = (cell, index) => {
-  if (move === "X") {
-    cell.textContent = "X";
+  if (move === "X") {// se il turno è di "x"
+    cell.textContent = "X";//immetti X al click
     gameState[index] = move; // salva la mossa nell'indice preciso
-    checkWin();
+    checkWin();//controlla se ha vinto nel suo turno
     move = "O";
     statusPlayer.textContent = `E' il turno di: ${move}`;
   } else if (move === "O") {
@@ -56,18 +48,16 @@ const playGame = (cell, index) => {
 };
 
 function checkWin() {
-  let roundWin = false;
-  for (i = 0; i < winnerComb.length; i++) {
-    const win = winnerComb[i];
+  for (i = 0; i < winnerComb.length; i++) {//itera gli indici delle combinazioni vincenti
+    const win = winnerComb[i];//salva nella variabile win
     let a = gameState[win[0]]; // salva gli stati cliccati precedentemente in 3 variabili a, b e c
     let b = gameState[win[1]];
     let c = gameState[win[2]];
-    if (a === "" || b === "" || c === "") {
+    if (a === "" || b === "" || c === "") {// se sono vuote, continua la funzione
       continue;
     }
     if (a === b && b === c) {
       // se queste 3 variabili sono uguali (tutti "x" o "o")
-      roundWin = true;
       winP.innerHTML = `<h1>${move} ha vinto!</h1>
       <h3>Prossimo turno tra 3 secondi</h3>`;
       setTimeout(() => {
@@ -80,7 +70,7 @@ function checkWin() {
 const restartGame = () => {
   move = "X";
   winP.textContent = "";
-  cells.forEach((cell) => {
+  cells.forEach((cell) => {// itera celle e tabelle, svuotando tutto
     cell.textContent = "";
     gameState = ["", "", "", "", "", "", "", "", ""];
   });
