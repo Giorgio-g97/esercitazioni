@@ -2,7 +2,7 @@
 
 let productsHTML = '';
 
-products.forEach((product) => {
+products.forEach((product) => {// Accumulate method
     productsHTML += `
         <div class="product-container">
         <div class="product-image-container">
@@ -48,7 +48,8 @@ products.forEach((product) => {
         Added
         </div>
 
-        <button class="add-to-cart-button button-primary">
+        <button class="add-to-cart-button button-primary js-add-to-cart"
+        data-product-id="${product.id}">
         Add to Cart
         </button>
     </div>
@@ -57,3 +58,25 @@ products.forEach((product) => {
 
 document.querySelector('.js-products-grid')
     .innerHTML = productsHTML
+
+    document.querySelectorAll('.js-add-to-cart')
+        .forEach((button) => {
+            button.addEventListener('click', () => {
+                const productId = button.dataset.productId;
+                let matchingItem;// var per salvare item già presente
+                cart.forEach(item => {// itera gli items del carrello
+                    if(productId === item.productId){// se il nome del prodotto che si vuole aggiungere è uguale al nome del prodotto presente già nel carrello
+                        matchingItem = item;//Inserisci nella var
+                    }
+                });
+                if(matchingItem){//se il match esiste
+                    matchingItem.quantity += 1 // incrementa solo la quantità
+                }else{
+                    cart.push({//altrimenti pusha nuovo item diverso
+                        productId: productId,
+                        quantity: 1
+                    })
+                }
+                console.log(cart);
+            })
+        })
