@@ -44,10 +44,8 @@ document.querySelectorAll(".inputCheck").forEach((checkBtn, index) => {
   checkBtn.addEventListener('click', () => {
     const nameList = document.getElementsByClassName('nameList')
     const dateList = document.getElementsByClassName('dateList')
-      console.log('checked');
-      // arrayList[index].addList.toogle('checked')
-      nameList[index].classList.toggle('checked')
-      dateList[index].classList.toggle('checked')
+    nameList[index].classList.toggle('checked')
+    dateList[index].classList.toggle('checked')
     })
 })
 };
