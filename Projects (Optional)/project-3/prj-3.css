@@ -4,7 +4,7 @@ body {
 
 .todo-grid {
     display: grid;
-    grid-template-columns: 150px 100px 100px;
+    grid-template-columns: 150px 150px 100px;
     column-gap: 10px;
     row-gap: 10px;
     align-items: center;
@@ -30,11 +30,6 @@ input {
     border-radius: 5px;
     color: white;
     padding: 10px 5px;
-}
-
-.delCheckBtn {
- display: flex;
- justify-content: space-evenly;
 }
 
 .checked{
