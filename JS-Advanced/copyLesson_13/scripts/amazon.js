@@ -57,6 +57,8 @@ products.forEach((product) => {
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
+const timerId = {};// Ogni oggetto avrà il proprio timerId
+
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   button.addEventListener("click", () => {
 
@@ -73,21 +75,27 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     const sel = document.querySelector(`.js-quantity-selector-${productId}`)
     let selVal = Number(sel.value)
 
-    const addToCartBtn = document.querySelector(`.js-add-cart-${productId}`)
-    addToCartBtn.style.opacity = '1'
 
-    const removeOpacity() {
+    const addToCartText = document.querySelector(`.js-add-cart-${productId}`)
+    addToCartText.style.opacity = '1';// set opacity to 100%
 
-      
+    const prevTimerId = timerId[productId]// La prima volta è undefined
+    console.log(prevTimerId);
+
+    if(prevTimerId){// se esiste
+        clearTimeout(prevTimerId)//cancella il timer se clicco su aggiungi
     }
-    const intervalId = setTimeout(() => {
-      addToCartBtn.style.opacity = '0'
+
+    const currTimerId = setTimeout(() => {//Altrimenti rimuovi il msg dopo 2 secondi
+        removeOp();
     }, 2000);
 
-    clearInterval(intervalId);
-    intervalId()
+    timerId[productId] = currTimerId//imposta il timer corrente come il timerId per poi inserirlo come timer precedente al prossimo ciclo
 
-
+    function removeOp(){
+        addToCartText.style.opacity = '0'
+    }
+    
     if (matchingItem) {
       //se il match esiste
       matchingItem.quantity += selVal; // incrementa solo la quantità
@@ -108,5 +116,3 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
   });
 });
-
-document.querySelector
