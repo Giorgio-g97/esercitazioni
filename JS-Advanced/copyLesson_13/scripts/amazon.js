@@ -42,7 +42,7 @@ products.forEach((product) => {
 
         <div class="product-spacer"></div>
 
-        <div class="added-to-cart">
+        <div class="added-to-cart js-add-cart-${product.id}">
         <img src="images/icons/checkmark.png">
         Added
         </div>
@@ -59,7 +59,8 @@ document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
   button.addEventListener("click", () => {
-    const productId = button.dataset.productId;
+
+    const {productId} = button.dataset;
     let matchingItem; // var per salvare item già presente
     cart.forEach((item) => {
       // itera gli items del carrello
@@ -71,7 +72,21 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
 
     const sel = document.querySelector(`.js-quantity-selector-${productId}`)
     let selVal = Number(sel.value)
-    console.log(selVal);
+
+    const addToCartBtn = document.querySelector(`.js-add-cart-${productId}`)
+    addToCartBtn.style.opacity = '1'
+
+    const removeOpacity() {
+
+      
+    }
+    const intervalId = setTimeout(() => {
+      addToCartBtn.style.opacity = '0'
+    }, 2000);
+
+    clearInterval(intervalId);
+    intervalId()
+
 
     if (matchingItem) {
       //se il match esiste
@@ -79,7 +94,7 @@ document.querySelectorAll(".js-add-to-cart").forEach((button) => {
     } else {
       cart.push({
         //altrimenti pusha nuovo item diverso
-        productId: productId,
+        productId,
         quantity: selVal,
       });
     }
