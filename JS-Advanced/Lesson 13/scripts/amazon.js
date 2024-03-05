@@ -1,4 +1,5 @@
-import {cart as myCart} from '../data/cart.js'// si può rinominare come altra variabile per evitare conflitti
+import {cart} from '../data/cart.js'// si può rinominare come altra variabile per evitare conflitti es. import {cart as myCart} from '../.../'
+import { products } from '../data/products.js';
 
 let productsHTML = '';
 
