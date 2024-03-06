@@ -19,7 +19,7 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
     //console.log(matchingProduct);//facendo una prova, ci stampa l'oggetto del prodotto presente all'interno dell'altro array products, possiamo quindi usarlo per generare in maniera dinamica le proprietà di quel prodortto (img, name, price ecc...)
 
     cartSummaryHTML +=  `
-    <div class="cart-item-container">
+    <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
     <div class="delivery-date">
       Delivery date: Tuesday, June 21
     </div>
@@ -106,6 +106,9 @@ document.querySelectorAll('.js-delete-link').forEach(link => {
     // console.log('delete');
     const productId = link.dataset.productId;//prendiamo il del button di quell'id specifico sfruttando il dataset attribute
     console.log(productId);
-    removeFromCart(productId)
+    removeFromCart(productId);//rimuovi dall'array cart
+    const container = document.querySelector(`.js-cart-item-container-${productId}`)//prendo l'elemento dal DOM
+    // console.log(container);
+    container.remove();//uso il metodo .remove() per rimuoverlo dalla pagina
   })
 })
