@@ -1,5 +1,6 @@
 import { cart } from "../data/cart.js";// importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js";// importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
+import {formatCurrency} from './utils/money.js'
 
 let cartSummaryHTML = '';
 
@@ -32,7 +33,7 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
           ${matchingProduct.name}
         </div>
         <div class="product-price">
-          $${matchingProduct.priceCents * 100}
+          $${formatCurrency(matchingProduct.priceCents)}
         </div>
         <div class="product-quantity">
           <span>
@@ -54,7 +55,7 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
         <div class="delivery-option">
           <input type="radio" checked
             class="delivery-option-input"
-            name="delivery-option-1">
+            name="delivery-option-${matchingProduct.id}">
           <div>
             <div class="delivery-option-date">
               Tuesday, June 21
@@ -67,7 +68,7 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
         <div class="delivery-option">
           <input type="radio"
             class="delivery-option-input"
-            name="delivery-option-1">
+            name="delivery-option-${matchingProduct.id}">
           <div>
             <div class="delivery-option-date">
               Wednesday, June 15
@@ -80,7 +81,7 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
         <div class="delivery-option">
           <input type="radio"
             class="delivery-option-input"
-            name="delivery-option-1">
+            name="delivery-option-${matchingProduct.id}">
           <div>
             <div class="delivery-option-date">
               Monday, June 13
