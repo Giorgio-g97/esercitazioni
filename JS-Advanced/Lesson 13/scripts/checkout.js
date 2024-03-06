@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js";// importa il carrello per generare html dei prodotti all'interno dell'array cart
+import { cart, removeFromCart } from "../data/cart.js";// importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js";// importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import {formatCurrency} from './utils/money.js'
 
@@ -42,7 +42,7 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
           <span class="update-quantity-link link-primary">
             Update
           </span>
-          <span class="delete-quantity-link link-primary">
+          <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
             Delete
           </span>
         </div>
@@ -100,3 +100,12 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML
 
 // console.log(cartSummaryHTML)
+
+document.querySelectorAll('.js-delete-link').forEach(link => {
+  link.addEventListener('click', () => {
+    // console.log('delete');
+    const productId = link.dataset.productId;//prendiamo il del button di quell'id specifico sfruttando il dataset attribute
+    console.log(productId);
+    removeFromCart(productId)
+  })
+})

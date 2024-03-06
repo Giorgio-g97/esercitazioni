@@ -1,4 +1,4 @@
-export const cart = [{
+export let cart = [{
     productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",// Salviamo solo l'id perché possiamo estrapolare i dati all'interno dell'array 'products': normalizing data
     quantity: 2
 },
@@ -26,4 +26,17 @@ export function addToCart(productId) {
         quantity: 1,
       });
     }
+  }
+
+  export function removeFromCart(productId) {
+    const newCart = []//creiamo nuovo array di prodotti del carrello da aggiornare
+
+    cart.forEach(cartItem => {//itera l'array carrello
+      if(cartItem.productId !== productId){//se il productId non è uguale al productId scelto da eliminare
+        newCart.push(cartItem);//aggiungi al nuovo carrello
+      }// in questo modo riaggiunge tutti i prodotti TRANNE quello con l'id giustamente da eliminare
+    });
+
+    cart = newCart;//riassegno tutti i prodotti all'array "cart"
+    console.log(cart)
   }
