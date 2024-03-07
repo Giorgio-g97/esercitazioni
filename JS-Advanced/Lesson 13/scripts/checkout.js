@@ -1,4 +1,9 @@
-import { cart, removeFromCart, calcCartQuantity, updateQuantity } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
+import {
+  cart,
+  removeFromCart,
+  calcCartQuantity,
+  updateQuantity,
+} from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "./utils/money.js";
 
@@ -41,7 +46,9 @@ cart.forEach((cartItem) => {
         </div>
         <div class="product-quantity">
           <span>
-            Quantity: <span class="quantity-label js-quantity-label">${cartItem.quantity}</span>
+            Quantity: <span class="quantity-label js-quantity-label">${
+              cartItem.quantity
+            }</span>
           </span>
           <span class="update-quantity-link link-primary js-update-quantity" data-product-id="${
             matchingProduct.id
@@ -147,23 +154,53 @@ document.querySelectorAll(".js-update-quantity").forEach((link) => {
     const container = document.querySelector(
       `.js-cart-item-container-${productId}`
     );
-    container.classList.add('is-editing-quantity')
+    container.classList.add("is-editing-quantity");
   });
 });
 
 // Save product Button
-document.querySelectorAll('.js-save-quantity-link').forEach(link => {
-  link.addEventListener('click', () => {
-    const productId = link.dataset.productId
-    const container = document.querySelector(`.js-cart-item-container-${productId}`);
-    container.classList.remove('is-editing-quantity')
-    const inputValue = document.querySelector('.js-quantity-input')
-    const val = Number(inputValue.value)
-    // console.log(val);
-    updateQuantity(productId, val)
-    document.querySelector('.js-quantity-label').textContent = `${val}`
+document.querySelectorAll(".js-save-quantity-link").forEach((link) => {
+  // Save on click
+  link.addEventListener("click", () => {
+    const productId = link.dataset.productId;
+    const container = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    );
+    container.classList.remove("is-editing-quantity");
+    const inputValue = document.querySelector(".js-quantity-input");
+    const val = Number(inputValue.value);
+    if (val > 1000 || val < 0) {
+      console.log("quantity must be between 0 and 1000");
+      return;
+    }
+    updateQuantity(productId, val);
+    document.querySelector(".js-quantity-label").textContent = `${val}`;
+
     updateCartQuantity();
-  })
-})
+  });
+
+// Gestione keydown 'Enter'
+  const inputValue = document.querySelector(".js-quantity-input");
+
+  inputValue.addEventListener("keydown", (e) => {
+    // console.log(e.key)
+    if (e.key === "Enter") {
+      const productId = link.dataset.productId;
+      const container = document.querySelector(
+        `.js-cart-item-container-${productId}`
+      );
+      container.classList.remove("is-editing-quantity");
+      const val = Number(inputValue.value);
+      if (val > 1000 || val < 0) {
+        console.log("quantity must be between 0 and 1000");
+        return;
+      }
+      updateQuantity(productId, val);
+      document.querySelector(".js-quantity-label").textContent = `${val}`;
+
+      updateCartQuantity();
+    }
+  });
+});
 
 updateCartQuantity();
