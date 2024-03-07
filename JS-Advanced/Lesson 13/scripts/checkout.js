@@ -48,8 +48,10 @@ cart.forEach((cartItem) => {
           }">
             Update
           </span>
-          <input class="quantity-input">
-          <span class="save-quantity-link link-primary">Save</span>
+          <input class="quantity-input js-quantity-input">
+          <span class="save-quantity-link link-primary js-save-quantity-link" data-product-id="${
+            matchingProduct.id
+          }">Save</span>
           <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
             matchingProduct.id
           }">
@@ -111,6 +113,7 @@ document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML; //rende
 
 // console.log(cartSummaryHTML)
 
+// Delete Button
 document.querySelectorAll(".js-delete-link").forEach((link) => {
   link.addEventListener("click", () => {
     // console.log('delete');
@@ -126,6 +129,7 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
   });
 });
 
+// Update Cart Header
 function updateCartQuantity() {
   const cartQuantity = calcCartQuantity();
 
@@ -135,6 +139,7 @@ function updateCartQuantity() {
   // console.log(cartItem.quantity)
 }
 
+// Update product Button
 document.querySelectorAll(".js-update-quantity").forEach((link) => {
   link.addEventListener("click", () => {
     const productId = link.dataset.productId;
@@ -145,5 +150,17 @@ document.querySelectorAll(".js-update-quantity").forEach((link) => {
     container.classList.add('is-editing-quantity')
   });
 });
+
+// Save product Button
+document.querySelectorAll('.js-save-quantity-link').forEach(link => {
+  link.addEventListener('click', () => {
+    const productId = link.dataset.productId
+    const container = document.querySelector(`.js-cart-item-container-${productId}`);
+    container.classList.remove('is-editing-quantity')
+    const inputValue = document.querySelector('.js-quantity-input')
+    const val = Number(inputValue.value)
+    console.log(val);
+  })
+})
 
 updateCartQuantity();
