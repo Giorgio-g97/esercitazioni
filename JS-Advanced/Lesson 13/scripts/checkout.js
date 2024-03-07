@@ -1,4 +1,4 @@
-import { cart, removeFromCart, calcCartQuantity } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
+import { cart, removeFromCart, calcCartQuantity, updateQuantity } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "./utils/money.js";
 
@@ -160,6 +160,7 @@ document.querySelectorAll('.js-save-quantity-link').forEach(link => {
     const inputValue = document.querySelector('.js-quantity-input')
     const val = Number(inputValue.value)
     console.log(val);
+    updateQuantity(productId, val)
   })
 })
 
