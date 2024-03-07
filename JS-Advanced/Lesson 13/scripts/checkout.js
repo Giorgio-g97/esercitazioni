@@ -6,6 +6,13 @@ import {
 } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "./utils/money.js";
+import { hello } from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js'//ESM version of the library
+import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'// export default (without {})
+
+const today = dayjs();
+const deliveryDate = today.add(7, 'days')
+
+console.log(deliveryDate.format('dddd, MMMM D'));
 
 let cartSummaryHTML = "";
 
