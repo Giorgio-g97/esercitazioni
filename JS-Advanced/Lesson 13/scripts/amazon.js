@@ -1,4 +1,4 @@
-import { cart, addToCart} from "../data/cart.js"; // si può rinominare come altra variabile per evitare conflitti es. import {cart as myCart} from '../.../'
+import { cart, addToCart, calcCartQuantity} from "../data/cart.js"; // si può rinominare come altra variabile per evitare conflitti es. import {cart as myCart} from '../.../'
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 
@@ -61,12 +61,9 @@ products.forEach((product) => {
 
 document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
-export function updateCartQuantity() {
-  let cartQuantity = 0;
+function updateCartQuantity() {
 
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-  });
+  const cartQuantity = calcCartQuantity()
 
   document.querySelector(".js-cart-quantity").textContent = cartQuantity;
 }

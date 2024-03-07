@@ -1,4 +1,4 @@
-import { cart, removeFromCart } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
+import { cart, removeFromCart, calcCartQuantity } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "./utils/money.js";
 
@@ -123,12 +123,8 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
 });
 
 function updateCartQuantity() {
-  let cartQuantity = 0;
 
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
-    console.log(cartQuantity);
-  });
+  const cartQuantity = calcCartQuantity()
 
   document.querySelector(
     `.js-checkout-header`

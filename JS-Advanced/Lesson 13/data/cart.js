@@ -40,3 +40,13 @@ export function addToCart(productId) {
     console.log(cart);
     saveToStorage();
   }
+
+  export function calcCartQuantity() {
+    let cartQuantity = 0;
+  
+    cart.forEach((cartItem) => {
+      cartQuantity += cartItem.quantity;
+    });
+
+    return cartQuantity;
+  }
