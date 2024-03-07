@@ -1,25 +1,29 @@
-import { cart, removeFromCart } from "../data/cart.js";// importa il carrello per generare html dei prodotti all'interno dell'array cart
-import { products } from "../data/products.js";// importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
-import {formatCurrency} from './utils/money.js'
+import { cart, removeFromCart } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
+import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
+import { formatCurrency } from "./utils/money.js";
 
-let cartSummaryHTML = '';
+let cartSummaryHTML = "";
 
-cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
+cart.forEach((cartItem) => {
+  // scorri gli elementi presenti nel carrello
 
-    const productId = cartItem.productId// facciamo corrispondere l'id del prodotto con quello presente nell'altro file cart.js importato prima
+  const productId = cartItem.productId; // facciamo corrispondere l'id del prodotto con quello presente nell'altro file cart.js importato prima
 
-    let matchingProduct;//crea variabile per controllare che l'id del prodotto corrisponda a quello del carrello
+  let matchingProduct; //crea variabile per controllare che l'id del prodotto corrisponda a quello del carrello
 
-    products.forEach((product) => {
-        if(product.id === productId){//se l'id carrello corrisponde all'id del prodotto
-            matchingProduct = product // il prodotto corrisponde al prodotto controllato
-        }
-    })
+  products.forEach((product) => {
+    if (product.id === productId) {
+      //se l'id carrello corrisponde all'id del prodotto
+      matchingProduct = product; // il prodotto corrisponde al prodotto controllato
+    }
+  });
 
-    //console.log(matchingProduct);//facendo una prova, ci stampa l'oggetto del prodotto presente all'interno dell'altro array products, possiamo quindi usarlo per generare in maniera dinamica le proprietà di quel prodortto (img, name, price ecc...)
+  //console.log(matchingProduct);//facendo una prova, ci stampa l'oggetto del prodotto presente all'interno dell'altro array products, possiamo quindi usarlo per generare in maniera dinamica le proprietà di quel prodortto (img, name, price ecc...)
 
-    cartSummaryHTML +=  `
-    <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
+  cartSummaryHTML += `
+    <div class="cart-item-container js-cart-item-container-${
+      matchingProduct.id
+    }">
     <div class="delivery-date">
       Delivery date: Tuesday, June 21
     </div>
@@ -42,7 +46,9 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
           <span class="update-quantity-link link-primary">
             Update
           </span>
-          <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
+          <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
+            matchingProduct.id
+          }">
             Delete
           </span>
         </div>
@@ -97,29 +103,37 @@ cart.forEach((cartItem) => {// scorri gli elementi presenti nel carrello
     `;
 });
 
-document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML//render products in HTML
+document.querySelector(".js-order-summary").innerHTML = cartSummaryHTML; //render products in HTML
 
 // console.log(cartSummaryHTML)
 
-document.querySelectorAll('.js-delete-link').forEach(link => {
-  link.addEventListener('click', () => {
+document.querySelectorAll(".js-delete-link").forEach((link) => {
+  link.addEventListener("click", () => {
     // console.log('delete');
-    const productId = link.dataset.productId;//prendiamo il del button di quell'id specifico sfruttando il dataset attribute
+    const productId = link.dataset.productId; //prendiamo il del button di quell'id specifico sfruttando il dataset attribute
     console.log(productId);
-    removeFromCart(productId);//rimuovi dall'array cart
-    const container = document.querySelector(`.js-cart-item-container-${productId}`)//prendo l'elemento dal DOM
+    removeFromCart(productId); //rimuovi dall'array cart
+    const container = document.querySelector(
+      `.js-cart-item-container-${productId}`
+    ); //prendo l'elemento dal DOM
     // console.log(container);
-    container.remove();//uso il metodo .remove() per rimuoverlo dalla pagina
-  })
-})
+    container.remove(); //uso il metodo .remove() per rimuoverlo dalla pagina
+    updateCartQuantity();
+  });
+});
 
-let cartQuantity = 0;
+function updateCartQuantity() {
+  let cartQuantity = 0;
 
-cart.forEach(cartItem => {
-  cartQuantity += cartItem.quantity
-  console.log(cartQuantity);
-})
+  cart.forEach((cartItem) => {
+    cartQuantity += cartItem.quantity;
+    console.log(cartQuantity);
+  });
 
-document.querySelector(`.js-checkout-header`)
-      .textContent = `${cartQuantity} items`
-// console.log(cartItem.quantity)
+  document.querySelector(
+    `.js-checkout-header`
+  ).textContent = `${cartQuantity} items`;
+  // console.log(cartItem.quantity)
+}
+
+updateCartQuantity();
