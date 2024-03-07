@@ -68,7 +68,7 @@ export function updateCartQuantity() {
     cartQuantity += cartItem.quantity;
   });
 
-  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+  document.querySelector(".js-cart-quantity").textContent = cartQuantity;
 }
 
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
