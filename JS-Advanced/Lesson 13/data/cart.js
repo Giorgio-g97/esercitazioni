@@ -1,4 +1,15 @@
-export let cart = JSON.parse(localStorage.getItem("cart")) || [];
+export let cart = JSON.parse(localStorage.getItem("cart")) || [
+  {
+    productId: "54e0eccd-8f36-462b-b68a-8182611d9add",
+    quantity: 6,
+    deliveryOptionId: "1",
+  },
+  {
+    productId: "15b6fc6f-327a-4ec4-896f-486349e85a3d",
+    quantity: 1,
+    deliveryOptionId: "2",
+  },
+];
 
 function saveToStorage() {
   localStorage.setItem("cart", JSON.stringify(cart)); // salviamo il carrello in localStorage. RICODA di convertire prima in stringa
@@ -21,6 +32,7 @@ export function addToCart(productId) {
       //altrimenti pusha nuovo item diverso
       productId: productId,
       quantity: 1,
+      deliveryOptionId: '1'
     });
   }
   saveToStorage();
@@ -58,7 +70,7 @@ export function updateQuantity(productId, newQuantity) {
     if (productId === cartItem.productId) {
       matchingItem = cartItem;
     }
-    matchingItem.quantity = newQuantity
+    matchingItem.quantity = newQuantity;
   });
   saveToStorage();
 }
