@@ -6,8 +6,7 @@ import {
 } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "./utils/money.js";
-import { hello } from "https://unpkg.com/supersimpledev@1.0.1/hello.esm.js"; //ESM version of the library
-import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js"; // export default (without {})
+import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js"; // export default (without {}), is the ESM version of the library
 import { deliveryOptions } from "../data/deliveryOptions.js";
 
 // const today = dayjs();
@@ -38,7 +37,7 @@ cart.forEach((cartItem) => {
       matchingProduct.id
     }">
     <div class="delivery-date">
-      Delivery date: Tuesday, June 21
+      Delivery date: ${dateString}
     </div>
 
     <div class="cart-item-details-grid">
@@ -79,32 +78,32 @@ cart.forEach((cartItem) => {
         <div class="delivery-options-title">
           Choose a delivery option:
         </div>
-        ${deliveryOptionsHTML(matchingProduct)}
+        ${deliveryOptionsHTML(matchingProduct, cartItem)}
       </div>
     </div>
   </div>
     `;
 });
 
-function deliveryOptionsHTML(matchingProduct) {
+function deliveryOptionsHTML(matchingProduct, cartItem) {
   let html = '' 
 
   deliveryOptions.forEach((deliveryOption) => {
-    const today = dayjs();
-    const deliveryDate = today.add(
+    const today = dayjs();// save var today
+    const deliveryDate = today.add(// aggiungi in base  ai giorni stabiliti dall'id delivery
       deliveryOption.deliveryDays,
       'days'
       );
-      const dateString = deliveryDate.format('dddd, MMMM D')
+      const dateString = deliveryDate.format('dddd, MMMM D')// Formattazione data
 
       const priceString = deliveryOption.priceCents === 0
       ? 'FREE': `$${formatCurrency(deliveryOption.priceCents)} -`// ternary operator
 
-      const isChecked = deliveryOption.id
+      const isChecked = deliveryOption.id === cartItem.deliveryOptionId;//controlla se l'id del prodotto presente nel carrello è uguale all'ID preimpostato nel deliveryOptions, successivamente nel tern. op. in basso imposto che se è verificata la condiz. imposta su "checked", altrimenti vuoto
 
     html += `
       <div class="delivery-option">
-      <input type="radio" checked
+      <input type="radio" ${isChecked ? 'checked' : ''}
         class="delivery-option-input"
         name="delivery-option-${matchingProduct.id}">
       <div>

@@ -32,7 +32,7 @@ export function addToCart(productId) {
       //altrimenti pusha nuovo item diverso
       productId: productId,
       quantity: 1,
-      deliveryOptionId: '1'
+      deliveryOptionId: "1"
     });
   }
   saveToStorage();
