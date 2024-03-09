@@ -248,4 +248,4 @@ function rendereOrderSummary() {
   updateCartQuantity();
 }
 
-rendereOrderSummary();//E' il modo migliore per aggiornare i dati: 1) Aggiorno i dati 2) rigenero l'HTML includendo il tutto in una funzione e rievocandola quando serve per aggiornare
+rendereOrderSummary();//E' il modo migliore per aggiornare i dati: 1) Aggiorno i dati 2) rigenero l'HTML includendo il tutto in una funzione e rievocandola quando serve per aggiornare. Questa tecnica si chiama MVC = Model View Controller
