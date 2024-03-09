@@ -3,6 +3,7 @@ import {
   removeFromCart,
   calcCartQuantity,
   updateQuantity,
+  updateDeliveryOption
 } from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
 import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "./utils/money.js";
@@ -118,8 +119,11 @@ function deliveryOptionsHTML(matchingProduct, cartItem) {
 
       const isChecked = deliveryOption.id === cartItem.deliveryOptionId;//controlla se l'id del prodotto presente nel carrello è uguale all'ID preimpostato nel deliveryOptions, successivamente nel tern. op. in basso imposto che se è verificata la condiz. imposta su "checked", altrimenti vuoto
 
+//Colleghiamo dataAttrib per assegn. id al div dove gestiamo l'addEventListener "js-del-opt"
     html += `
-      <div class="delivery-option">
+      <div class="delivery-option js-delivery-option"
+      data-product-id="${matchingProduct.id}"
+      data-delivery-option-id="${deliveryOption.id}">
       <input type="radio" ${isChecked ? 'checked' : ''}
         class="delivery-option-input"
         name="delivery-option-${matchingProduct.id}">
@@ -156,6 +160,16 @@ document.querySelectorAll(".js-delete-link").forEach((link) => {
     updateCartQuantity();
   });
 });
+
+// Gestione delivery options
+
+document.querySelectorAll('.js-delivery-option').forEach((element) => {
+  element.addEventListener('click', () => {
+// Otteniamo valori tramite dataAttrb (shortCode)
+    const {productId, deliveryOptionId} = element.dataset;// usiamo i dataset attribute dei deliveryOpt per estrapolare gli id products & delivery
+    updateDeliveryOption(productId, deliveryOptionId);
+  })
+})
 
 // Update Cart Header
 function updateCartQuantity() {
