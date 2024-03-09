@@ -4,18 +4,18 @@ import {
   calcCartQuantity,
   updateQuantity,
   updateDeliveryOption,
-} from "../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
-import { products } from "../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
-import { formatCurrency } from "./utils/money.js";
+} from "../../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
+import { products } from "../../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
+import { formatCurrency } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js"; // export default (without {}), is the ESM version of the library
-import { deliveryOptions } from "../data/deliveryOptions.js";
+import { deliveryOptions } from "../../data/deliveryOptions.js";
 
 // const today = dayjs();
 // const deliveryDate = today.add(7, 'days')
 
 // console.log(deliveryDate.format('dddd, MMMM D'));
 
-function rendereOrderSummary() {
+export function rendereOrderSummary() {
   let cartSummaryHTML = "";
 
   cart.forEach((cartItem) => {
@@ -246,6 +246,4 @@ function rendereOrderSummary() {
   });
 
   updateCartQuantity();
-}
-
-rendereOrderSummary(); //E' il modo migliore per aggiornare i dati: 1) Aggiorno i dati 2) rigenero l'HTML includendo il tutto in una funzione e rievocandola quando serve per aggiornare. Questa tecnica si chiama MVC = Model View Controller
+}//E' il modo migliore per aggiornare i dati: 1) Aggiorno i dati 2) rigenero l'HTML includendo il tutto in una funzione e rievocandola quando serve per aggiornare. Questa tecnica si chiama MVC = Model View Controller
