@@ -32,6 +32,23 @@ cart.forEach((cartItem) => {
 
   //console.log(matchingProduct);//facendo una prova, ci stampa l'oggetto del prodotto presente all'interno dell'altro array products, possiamo quindi usarlo per generare in maniera dinamica le proprietà di quel prodortto (img, name, price ecc...)
 
+  const deliveryOptionId = cartItem.deliveryOptionId;
+
+  let deliveryOption;
+
+  deliveryOptions.forEach((option) => {//se l'id dell'opzione di consegna è uguale all'id della consegna presente nel prodotto all'interno del carrello
+    if(option.id === deliveryOptionId){
+      deliveryOption = option;//i prodotti coincideranno
+    }// Abbiamo ora accesso alle proprietà per calcolare i giorni nell'header di consegna
+  });
+
+  const today = dayjs();// save var today
+  const deliveryDate = today.add(// aggiungi in base  ai giorni stabiliti dall'id delivery
+    deliveryOption.deliveryDays,
+    'days'
+    );
+    const dateString = deliveryDate.format('dddd, MMMM D');// Formattazione data
+
   cartSummaryHTML += `
     <div class="cart-item-container js-cart-item-container-${
       matchingProduct.id
