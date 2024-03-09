@@ -1,7 +1,7 @@
 export let cart = JSON.parse(localStorage.getItem("cart")) || [
   {
     productId: "54e0eccd-8f36-462b-b68a-8182611d9add",
-    quantity: 6,
+    quantity: 2,
     deliveryOptionId: "1",
   },
   {

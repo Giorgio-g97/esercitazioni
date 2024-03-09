@@ -5,10 +5,10 @@ import {
   updateQuantity,
   updateDeliveryOption,
 } from "../../data/cart.js"; // importa il carrello per generare html dei prodotti all'interno dell'array cart
-import { products } from "../../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
+import { products, getProduct } from "../../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js"; // export default (without {}), is the ESM version of the library
-import { deliveryOptions } from "../../data/deliveryOptions.js";
+import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 
 // const today = dayjs();
 // const deliveryDate = today.add(7, 'days')
@@ -23,27 +23,13 @@ export function rendereOrderSummary() {
 
     const productId = cartItem.productId; // facciamo corrispondere l'id del prodotto con quello presente nell'altro file cart.js importato prima
 
-    let matchingProduct; //crea variabile per controllare che l'id del prodotto corrisponda a quello del carrello
-
-    products.forEach((product) => {
-      if (product.id === productId) {
-        //se l'id carrello corrisponde all'id del prodotto
-        matchingProduct = product; // il prodotto corrisponde al prodotto controllato
-      }
-    });
+    const matchingProduct = getProduct(productId);
 
     //console.log(matchingProduct);//facendo una prova, ci stampa l'oggetto del prodotto presente all'interno dell'altro array products, possiamo quindi usarlo per generare in maniera dinamica le proprietà di quel prodortto (img, name, price ecc...)
 
     const deliveryOptionId = cartItem.deliveryOptionId;
 
-    let deliveryOption;
-
-    deliveryOptions.forEach((option) => {
-      //se l'id dell'opzione di consegna è uguale all'id della consegna presente nel prodotto all'interno del carrello
-      if (option.id === deliveryOptionId) {
-        deliveryOption = option; //i prodotti coincideranno
-      } // Abbiamo ora accesso alle proprietà per calcolare i giorni nell'header di consegna
-    });
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
 
     const today = dayjs(); // save var today
     const deliveryDate = today.add(

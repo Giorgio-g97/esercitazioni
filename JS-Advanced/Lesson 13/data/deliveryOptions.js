@@ -12,4 +12,18 @@ export const deliveryOptions = [{
     id: '3',
     deliveryDays: 1,
     priceCents: 999
-}]
+}];
+
+export function getDeliveryOption(deliveryOptionId) {
+    
+    let deliveryOption;
+
+    deliveryOptions.forEach((option) => {
+      //se l'id dell'opzione di consegna è uguale all'id della consegna presente nel prodotto all'interno del carrello
+      if (option.id === deliveryOptionId) {
+        deliveryOption = option; //i prodotti coincideranno
+      } // Abbiamo ora accesso alle proprietà per calcolare i giorni nell'header di consegna
+    });
+
+    return deliveryOption;
+}

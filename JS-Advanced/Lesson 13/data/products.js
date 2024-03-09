@@ -1,3 +1,16 @@
+export function getProduct(productId) {
+  let matchingProduct; //crea variabile per controllare che l'id del prodotto corrisponda a quello del carrello
+
+    products.forEach((product) => {
+      if (product.id === productId) {
+        //se l'id carrello corrisponde all'id del prodotto
+        matchingProduct = product; // il prodotto corrisponde al prodotto controllato
+      }
+    });
+
+    return matchingProduct;
+}
+
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
