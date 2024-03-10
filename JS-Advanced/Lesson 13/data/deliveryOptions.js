@@ -51,7 +51,6 @@ export function caluclateDeliveryDate(deliveryOption) {
   while(remainingDays > 0){// i giorni di spedizione sono positivi?
     
     deliveryDate = deliveryDate.add(1, 'd')//Aggiungi un giorno alla data odierna
-    console.log(deliveryDate);
 
     if(!isWeekend(deliveryDate)){//Se la data odierna NON è weekend(sab-dom)
       remainingDays--;//i corrieri spediscono, togli un giorno
