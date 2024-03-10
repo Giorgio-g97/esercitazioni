@@ -1,4 +1,4 @@
-import { cart } from "../../data/cart.js";//importiamo il carrello per ottenere i dati dei prodotti (quantità, prezzo ecc..)
+import { cart, calcCartQuantity } from "../../data/cart.js";//importiamo il carrello per ottenere i dati dei prodotti (quantità, prezzo ecc..)
 import { getProduct } from "../../data/products.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import { formatCurrency } from "../utils/money.js";
@@ -16,7 +16,7 @@ export function renderPaymentSummary() {
         shippingPriceCents += deliveryOption.priceCents;//accediamo alla proprietà del costo spedizione e la aggiungiamo 
 
     });
-    
+
     const totalBeforeTaxCents = productPriceCents+shippingPriceCents;
     const taxCents = totalBeforeTaxCents * 0.1;
     const totalCents = totalBeforeTaxCents+taxCents;
@@ -29,7 +29,7 @@ export function renderPaymentSummary() {
     </div>
 
     <div class="payment-summary-row">
-    <div>Items (3):</div>
+    <div>Items (${calcCartQuantity()}):</div>
     <div class="payment-summary-money">$${formatCurrency(productPriceCents)}</div>
     </div>
 
@@ -61,3 +61,5 @@ export function renderPaymentSummary() {
     document.querySelector('.js-payment-summary')
         .innerHTML = paymentSummaryHTML;
 }
+
+renderPaymentSummary();

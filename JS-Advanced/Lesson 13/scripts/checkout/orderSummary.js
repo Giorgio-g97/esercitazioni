@@ -148,14 +148,19 @@ export function rendereOrderSummary() {
       const productId = link.dataset.productId; //prendiamo il del button di quell'id specifico sfruttando il dataset attribute
       console.log(productId);
       removeFromCart(productId); //rimuovi dall'array cart
+      
+      /*
+      ANZICHE' RIMUOVERLO DALLA PAGINA
       const container = document.querySelector(
         `.js-cart-item-container-${productId}`
       ); //prendo l'elemento dal DOM
-      // console.log(container);
       container.remove(); //uso il metodo .remove() per rimuoverlo dalla pagina
+      */
       updateCartQuantity();
 
       renderPaymentSummary();
+
+      rendereOrderSummary();// rigenero HTML
     });
   });
 
@@ -212,6 +217,7 @@ export function rendereOrderSummary() {
       document.querySelector(".js-quantity-label").textContent = `${val}`;
 
       updateCartQuantity();
+      renderPaymentSummary();
     });
 
     // Gestione keydown 'Enter'
@@ -234,6 +240,7 @@ export function rendereOrderSummary() {
         document.querySelector(".js-quantity-label").textContent = `${val}`;
 
         updateCartQuantity();
+        renderPaymentSummary();
       }
     });
   });
