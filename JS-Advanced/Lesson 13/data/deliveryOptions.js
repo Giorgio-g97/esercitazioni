@@ -30,14 +30,35 @@ export function getDeliveryOption(deliveryOptionId) {
     return deliveryOption;
 }
 
-export function caluclateDeliveryDate(deliveryOption) {
-  const today = dayjs(); // save var today
-    const deliveryDate = today.add(
-      // aggiungi in base  ai giorni stabiliti dall'id delivery
-      deliveryOption.deliveryDays,
-      "days"
-    );
-    const dateString = deliveryDate.format("dddd, MMMM D"); // Formattazione data
+function isWeekend(date) {
+  const dayOfWeek = date.format('dddd');//Formato giorno della settimana
+//ritorna true se il valore è 'saturday' o 'sunday'
+  return dayOfWeek === 'Saturday' || dayOfWeek === 'Sunday'
+}
 
-    return dateString;
+export function caluclateDeliveryDate(deliveryOption) {
+  // const today = dayjs(); // save var today
+  //   const deliveryDate = today.add(
+  //     // aggiungi in base  ai giorni stabiliti dall'id delivery
+  //     deliveryOption.deliveryDays,
+  //     "days"
+  //   );
+
+//Sono i giorni di spedizione
+  let remainingDays = deliveryOption.deliveryDays;
+  let deliveryDate = dayjs();
+
+  while(remainingDays > 0){// i giorni di spedizione sono positivi?
+    
+    deliveryDate = deliveryDate.add(1, 'd')//Aggiungi un giorno alla data odierna
+    console.log(deliveryDate);
+
+    if(!isWeekend(deliveryDate)){//Se la data odierna NON è weekend(sab-dom)
+      remainingDays--;//i corrieri spediscono, togli un giorno
+    }
+  }
+
+  const dateString = deliveryDate.format("dddd, MMMM D")
+
+  return dateString;
 }

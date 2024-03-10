@@ -34,9 +34,9 @@ export function rendereOrderSummary() {
 
     const deliveryOptionId = cartItem.deliveryOptionId;
 
-    const deliveryOption = getDeliveryOption(deliveryOptionId);
+    const deliveryOption = getDeliveryOption(deliveryOptionId);//Mi ritorna un oggetto
 
-    const dateString = caluclateDeliveryDate(deliveryOption)
+    const dateString = caluclateDeliveryDate(deliveryOption)//Mi ritorna una stringa
 
     cartSummaryHTML += `
       <div class="cart-item-container js-cart-item-container-${
