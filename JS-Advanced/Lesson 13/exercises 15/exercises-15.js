@@ -21,7 +21,7 @@ const beforeOneMonth = today.subtract(1, 'M').format('MMMM, D')
 export default function isWeekend(date){
   const formatDay = date.format('dddd');
   if(formatDay === 'Saturday' || formatDay === 'Sunday'){
-    console.log(true);
+    // console.log(true);
     return formatDay
   }
 }

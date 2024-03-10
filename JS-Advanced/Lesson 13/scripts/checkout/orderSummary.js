@@ -8,7 +8,7 @@ import {
 import { products, getProduct } from "../../data/products.js"; // importa i prodotti per prelevare tutti i dati (nome, prezzo, img)
 import { formatCurrency } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js"; // export default (without {}), is the ESM version of the library
-import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
+import { deliveryOptions, getDeliveryOption, caluclateDeliveryDate } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
 import { renderCheckoutHeader } from "./checkoutHeader.js";
 
@@ -36,13 +36,7 @@ export function rendereOrderSummary() {
 
     const deliveryOption = getDeliveryOption(deliveryOptionId);
 
-    const today = dayjs(); // save var today
-    const deliveryDate = today.add(
-      // aggiungi in base  ai giorni stabiliti dall'id delivery
-      deliveryOption.deliveryDays,
-      "days"
-    );
-    const dateString = deliveryDate.format("dddd, MMMM D"); // Formattazione data
+    const dateString = caluclateDeliveryDate(deliveryOption)
 
     cartSummaryHTML += `
       <div class="cart-item-container js-cart-item-container-${
@@ -101,13 +95,7 @@ export function rendereOrderSummary() {
     let html = "";
 
     deliveryOptions.forEach((deliveryOption) => {
-      const today = dayjs(); // save var today
-      const deliveryDate = today.add(
-        // aggiungi in base  ai giorni stabiliti dall'id delivery
-        deliveryOption.deliveryDays,
-        "days"
-      );
-      const dateString = deliveryDate.format("dddd, MMMM D"); // Formattazione data
+      const dateString = caluclateDeliveryDate(deliveryOption)
 
       const priceString =
         deliveryOption.priceCents === 0
@@ -142,7 +130,7 @@ export function rendereOrderSummary() {
 
   // console.log(cartSummaryHTML)
 
-  // Delete Button
+  // DELETE Button
   document.querySelectorAll(".js-delete-link").forEach((link) => {
     link.addEventListener("click", () => {
       // console.log('delete');
@@ -157,7 +145,7 @@ export function rendereOrderSummary() {
       ); //prendo l'elemento dal DOM
       container.remove(); //uso il metodo .remove() per rimuoverlo dalla pagina
       */
-      renderCheckoutHeader();
+      renderCheckoutHeader();//15k
 
       renderPaymentSummary();
 
@@ -187,7 +175,7 @@ export function rendereOrderSummary() {
   //   // console.log(cartItem.quantity)
   // }
 
-  // Update product Button
+  // UPDATE product Button
   document.querySelectorAll(".js-update-quantity").forEach((link) => {
     link.addEventListener("click", () => {
       const productId = link.dataset.productId;
@@ -199,7 +187,7 @@ export function rendereOrderSummary() {
     });
   });
 
-  // Save product Button
+  // SAVE AFTER UPDATE product Button
   document.querySelectorAll(".js-save-quantity-link").forEach((link) => {
     // Save on click
     link.addEventListener("click", () => {
@@ -221,7 +209,7 @@ export function rendereOrderSummary() {
       renderPaymentSummary();
     });
 
-    // Gestione keydown 'Enter'
+    // Gestione KEYDOWN 'Enter'
     const inputValue = document.querySelector(".js-quantity-input");
 
     inputValue.addEventListener("keydown", (e) => {
