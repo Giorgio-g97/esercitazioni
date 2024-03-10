@@ -11,6 +11,14 @@ import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js"; // export defa
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
 
+//15g
+import isSatSun from "../../exercises 15/exercises-15.js";
+
+const day = dayjs()
+const afterWeek = day.add(1, 'w')
+isSatSun(afterWeek)
+//
+
 export function rendereOrderSummary() {
   let cartSummaryHTML = "";
 
