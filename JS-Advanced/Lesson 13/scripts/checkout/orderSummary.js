@@ -10,6 +10,7 @@ import { formatCurrency } from "../utils/money.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js"; // export default (without {}), is the ESM version of the library
 import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 
 //15g
 import isSatSun from "../../exercises 15/exercises-15.js";
@@ -156,7 +157,7 @@ export function rendereOrderSummary() {
       ); //prendo l'elemento dal DOM
       container.remove(); //uso il metodo .remove() per rimuoverlo dalla pagina
       */
-      updateCartQuantity();
+      renderCheckoutHeader();
 
       renderPaymentSummary();
 
@@ -176,15 +177,15 @@ export function rendereOrderSummary() {
     });
   });
 
-  // Update Cart Header
-  function updateCartQuantity() {
-    const cartQuantity = calcCartQuantity();
+  // Update Cart Header - ESPORTATO IN NUOVA FUNCTION
+  // function updateCartQuantity() {
+  //   const cartQuantity = calcCartQuantity();
 
-    document.querySelector(
-      `.js-checkout-header`
-    ).textContent = `Checkout (${cartQuantity} items)`;
-    // console.log(cartItem.quantity)
-  }
+  //   document.querySelector(
+  //     `.js-checkout-header`
+  //   ).textContent = `Checkout (${cartQuantity} items)`;
+  //   // console.log(cartItem.quantity)
+  // }
 
   // Update product Button
   document.querySelectorAll(".js-update-quantity").forEach((link) => {
@@ -216,7 +217,7 @@ export function rendereOrderSummary() {
       updateQuantity(productId, val);
       document.querySelector(".js-quantity-label").textContent = `${val}`;
 
-      updateCartQuantity();
+      renderCheckoutHeader();
       renderPaymentSummary();
     });
 
@@ -239,11 +240,11 @@ export function rendereOrderSummary() {
         updateQuantity(productId, val);
         document.querySelector(".js-quantity-label").textContent = `${val}`;
 
-        updateCartQuantity();
+        renderCheckoutHeader();
         renderPaymentSummary();
       }
     });
   });
 
-  updateCartQuantity();
+  renderCheckoutHeader();
 }//E' il modo migliore per aggiornare i dati: 1) Aggiorno i dati 2) rigenero l'HTML includendo il tutto in una funzione e rievocandola quando serve per aggiornare. Questa tecnica si chiama MVC = Model View Controller
