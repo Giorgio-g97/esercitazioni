@@ -182,7 +182,7 @@ export function rendereOrderSummary() {
 
     document.querySelector(
       `.js-checkout-header`
-    ).textContent = `${cartQuantity} items`;
+    ).textContent = `Checkout (${cartQuantity} items)`;
     // console.log(cartItem.quantity)
   }
 
