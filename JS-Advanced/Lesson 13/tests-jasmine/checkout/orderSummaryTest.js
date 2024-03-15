@@ -1,5 +1,5 @@
 import { rendereOrderSummary } from "../../scripts/checkout/orderSummary.js";
-import { loadFromStorage } from "../../data/cart";
+import { loadFromStorage } from "../../data/cart.js";
 
 describe("Test suite: renderOrderSumary", () => {
   it("displays the cart", () => {
@@ -24,6 +24,5 @@ describe("Test suite: renderOrderSumary", () => {
     loadFromStorage(); //refresh cart
 
     rendereOrderSummary();//Generiamo HTML tramite funzione
-    //1h26m
   });
 });
