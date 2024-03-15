@@ -7,10 +7,12 @@ describe("Test suite: renderOrderSumary", () => {
                 <div class="js-order-summary"></div>
             `;
 
+      const productId1 = '54e0eccd-8f36-462b-b68a-8182611d9add'
+
     spyOn(localStorage, "getItem").and.callFake(() => {
       return JSON.stringify([
         {
-          productId: "54e0eccd-8f36-462b-b68a-8182611d9add",
+          productId: productId1,
           quantity: 2,
           deliveryOptionId: "1",
         },
@@ -22,7 +24,10 @@ describe("Test suite: renderOrderSumary", () => {
       ]);
     });
     loadFromStorage(); //refresh cart
+    rendereOrderSummary(); //Generiamo HTML tramite funzione
 
-    rendereOrderSummary();//Generiamo HTML tramite funzione
+
+    expect(document.querySelectorAll('.js-cart-item-container').length).toEqual(2);
+    expect(document.querySelector(`.js-product-quantity-${productId1}`))// 1h25m
   });
 });

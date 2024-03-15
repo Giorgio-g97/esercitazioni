@@ -23,7 +23,9 @@ export function renderPaymentSummary() {
 
 // Ora generiamo HTML
 
- const paymentSummaryHTML = `
+let paymentSummaryHTML;
+
+ paymentSummaryHTML += `
     <div class="payment-summary-title">
     Order Summary
     </div>
@@ -58,8 +60,6 @@ export function renderPaymentSummary() {
     </button>
  `;//Generiamo HTML
 
-    let paymentSum = document.querySelector('.js-payment-summary')
-        paymentSummaryHTML = paymentSum;
-}
+ document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHTML;
 
-renderPaymentSummary();
+}

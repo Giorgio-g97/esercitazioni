@@ -39,7 +39,7 @@ export function rendereOrderSummary() {
     const dateString = caluclateDeliveryDate(deliveryOption)//Mi ritorna una stringa
 
     cartSummaryHTML += `
-      <div class="cart-item-container js-cart-item-container-${
+      <div class="cart-item-container js-cart-item-container js-cart-item-container-${
         matchingProduct.id
       }">
       <div class="delivery-date">
@@ -57,7 +57,8 @@ export function rendereOrderSummary() {
           <div class="product-price">
             $${formatCurrency(matchingProduct.priceCents)}
           </div>
-          <div class="product-quantity">
+          <div class="product-quantity
+          js-product-quantity-${matchingProduct.id}">
             <span>
               Quantity: <span class="quantity-label js-quantity-label">${
                 cartItem.quantity
