@@ -58,8 +58,8 @@ export function renderPaymentSummary() {
     </button>
  `;//Generiamo HTML
 
-    document.querySelector('.js-payment-summary')
-        .innerHTML = paymentSummaryHTML;
+    let paymentSum = document.querySelector('.js-payment-summary')
+        paymentSummaryHTML = paymentSum;
 }
 
 renderPaymentSummary();

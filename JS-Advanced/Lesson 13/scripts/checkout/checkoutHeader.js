@@ -18,7 +18,7 @@ export function renderCheckoutHeader() {
       </div>
     </div>`//Genero HTML
 
-    document.querySelector('.js-checkout-header')
-        .innerHTML = checkoutHeaderHTML
+    let checkHead = document.querySelector('.js-checkout-header')
+    checkHead = checkoutHeaderHTML;
         // console.log('checkoutHeader')
     }
