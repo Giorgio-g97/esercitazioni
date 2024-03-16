@@ -27,7 +27,7 @@ describe("Test suite: renderOrderSumary", () => {
     rendereOrderSummary(); //Generiamo HTML tramite funzione
 
 
-    expect(document.querySelectorAll('.js-cart-item-container').length).toEqual(2);
-    expect(document.querySelector(`.js-product-quantity-${productId1}`))// 1h25m
+    expect(document.querySelectorAll('.js-cart-item-container').length).toEqual(2);//controlla se la lunghezza dell'array cartSummaryHTML sia uguale a 2
+    expect(document.querySelector(`.js-product-quantity-${productId1}`));//1h31m
   });
 });
