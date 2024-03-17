@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="js-btn">Vai</button>
+</body>
+<script>
+    // const btnGo = document.querySelector('.js-btn')
+    // btnGo.addEventListener('click', () =>{
+    //     alert('Ciao')//Finchè non clicco "ok" non uscirà il paragrafo
+
+    //     let pEl = document.createElement('p')//Crea elemento
+    //     pEl.textContent = 'Ciao, questo è un paragrafo'//scrivi il contenuto del testo
+    //     document.body.appendChild(pEl)//"appendilo" al corpo della pagina
+    // })
+
+    // let res = fetch('https://www.mindovermachines.com/wp-content/uploads/2019/03/rubber-ducky-2.jpg')
+    // console.log(res);//Pending
+    // let blob = res.blob();
+
+// Richiesta dati codice ASINCRONO (vecchio metodo)
+
+    // function loadAsset(url, type, callback){
+    //     let xhr = new XMLHttpRequest();//creiamo la richiesta
+    //     xhr.open('GET', url);//diciamo che è di tipo GET con l'url
+    //     xhr.responseType = type;//il tipo di risposta (blob)
+
+    //     xhr.onload = function() {//una volta caricato mi fai una funzione di callback (displayImage) con dentro la risposta "res"
+    //         callback(xhr.res);
+    //     };
+
+    //     xhr.send();
+    // }
+
+    // function displayImage(blob) {
+    //     let objUrl = URL.createObjectURL(blob);//Genera URL
+
+    //     let image = document.createElement('img');//Crea elemento img
+    //     image.src = objUrl;//Mette l'url nell'attributo corretto di img, cioè src
+    //     document.body.appendChild(image);//"Appende" all'elemento body
+    // }
+
+    // loadAsset('https://www.mindovermachines.com/wp-content/uploads/2019/03/rubber-ducky-2.jpg', 'blob', displayImage);
+
+// Richiesta dati codice ASINCRONO (Nuovo metodo)
+
+
+fetch('../JSON/classi.json').then(function(res){//una volta preso il file JSON
+    return res.json();//restituisce un oggetto (e una Promise) e lo rende leggibile in JSON (.json())
+}).then(function (json) {//poi mi prendi il contenuto
+    classe = json;
+    console.log('Dati: ', classe)//e me lo logghi
+}).catch(function (err) {//inoltre gestisco anche il caso di errore
+    console.log('Fetch problem ', err.message);
+})
+</script>
+</html>

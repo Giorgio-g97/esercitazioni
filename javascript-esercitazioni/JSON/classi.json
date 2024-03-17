@@ -1,0 +1,23 @@
+{
+    "nome": "4A",
+    "scuola": "Scuola Miao",
+    "insegnanti": [{
+        "nome": "Anna",
+        "materia": ["Storia", "Italiano"]
+    },
+    {
+        "nome": "Maria",
+        "materia": ["Matematica", "Scienze"]
+    }
+],
+"alunni": [
+    {
+        "nome": "Gaia",
+        "cognome": "Verdi"
+    },
+    {
+        "nome": "Mario",
+        "cognome": "Rossi"
+    }
+]
+}

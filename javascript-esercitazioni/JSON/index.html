@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    
+</body>
+<script>
+// Richiamare JSON
+    let url = "./classi.json"//Impostaimo l'url di richiesta
+    let req = new XMLHttpRequest();//Impostiamo la richiesta
+    req.open('GET', url)//Apriamo la richiesta di tipo GET con l'url
+    req.responseType = 'json'
+    req.send();
+
+    req.onload = function () {
+        const classe = req.response
+        console.log(classe.insegnanti);
+    }
+</script>
+</html>
