@@ -55,7 +55,7 @@
 
 function timeoutPromise (mes, interval) {
     return new Promise((res, rej) => {
-        if(mes === '' || typeof message !== 'string') {//Controllo mes
+        if(mes === '' || typeof mes !== 'string') {//Controllo mes
             rej('Il messaggio è vuoto o non è una stringa')
         }else if(interval < 0 || typeof interval !== 'number'){//Controllo timer
             rej("L'intevallo è negativo o non è un numero")
@@ -73,7 +73,7 @@ timeoutPromise('Ciao', 1000)
     })
     .catch(e => {
         console.log('Error ' + e);
-    })
+    });
 
 </script>
 </html>
