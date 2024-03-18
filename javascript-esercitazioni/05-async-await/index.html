@@ -10,21 +10,24 @@
 // ASYNC e AWAIT: Si usano al posto dei classici .then()
 // Rendono una funzione SINCRONA in ASINCRONA
 
-    // const url = "https://dattebayo-api.onrender.com/characters";
-    // async function functAsync() {
-    //   const ris = await fetch(url); //con await fetch() ci sarà direttamente una response() e non una Promise
-    //   return ris.json(); //Promise
-    // }
+    const url = "https://dattebayo-api.onrender.com/characters";
+    async function functAsync() {
+      try {
+        const ris = await fetch(url); //con await fetch() ci sarà direttamente una response() e non una Promise
+        const obj = await ris.json(); //Promise, con await è già diventata risposta
+      
+        const img = document.createElement("img"); //creiamo due elementi
+        const p = document.createElement("p");
+        img.src = obj.characters[0].images[0]; //Attribuiamo il link a "src"
+        p.textContent = obj.characters[0].name; //Cosa simile per il testo
+        document.body.appendChild(p); // li "appendiamo" al body
+        document.body.appendChild(img); 
+      } catch (error) {
+        console.log('Errore del server ', error);
+      }
+    }
 
-    // functAsync().then((dati) => {
-    //   const img = document.createElement("img"); //creiamo due elementi
-    //   const p = document.createElement("p");
-    //   img.src = dati.characters[0].images[0]; //Attribuiamo il link a "src"
-    //   p.textContent = dati.characters[0].name; //Cosa simile per il testo
-    //   document.body.appendChild(p); // li "appendiamo" al body
-    //   document.body.appendChild(img);
-    // });
-
+    functAsync()
 // ASYNC e AWAIT Edoardo Midali
 
     // async function hello() {
@@ -35,10 +38,11 @@
 
     // hello().then(value => console.log(value))//Con .then() ho la risposta
   
-    async function hello(){
-        return greeting = await Promise.resolve('hello');
-    }
+    // async function hello(){
+    //     let greeting = await 'hello';
+    //     console.log(greeting)
+    // }
 
-    hello().then(val => console.log(val))
+    // hello()
   </script>
 </html>
