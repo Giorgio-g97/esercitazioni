@@ -5,40 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Promises</title>
   </head>
-  <body></body>
+  <body>
+   <button class="fetchBtn">COMANDA FETCH</button>
+  </body>
   <script>
     //Cosa sono: indica lo STATO di una richiesta
 
+    document.querySelector('.fetchBtn').addEventListener('click', comandaFetch)
+
+    function comandaFetch(){
     const url = 'https://dattebayo-api.onrender.com/characters'
     const prom = fetch(url);
     // console.log(prom); //Pending (in attesa)
 
 // Metodo non corretto
+
     // prom.then((mes) => {
     //     console.log(mes.json());//restituisce una Promise se consollogghiamo
     // })//Su ogni Promise possiamo richiamare il metodo .then()
 
 // Utilizzo standard per ricevere i dati
+
     prom.then((messaggio) => {//La fetch creerà la prima PROMISE, Fatto il fulfilled della 1° Promise
         return messaggio.json();//ritorneremo il dato parsato da JSON ad oggetto JS
     }).then((datiRicevuti) => {//Una volta aspettato e fatto il 2° fulfilled del parse in oggetto JS
-        console.log(datiRicevuti);//Stamperemo il dato
+        // console.log(datiRicevuti);//Stamperemo il dato
         const img = document.createElement('img')//creiamo due elementi
         const p = document.createElement('p')
         img.src = datiRicevuti.characters[0].images[0] //Attribuiamo il link a "src"
         p.textContent = datiRicevuti.characters[0].name //Cosa simile per il testo
         document.body.appendChild(p)// li "appendiamo" al body
         document.body.appendChild(img)
-        return fetch(`${url}/${datiRicevuti.characters[0].id}`);
-    }).then((rispostaServer) => {
-      return rispostaServer.json()
-    }).then((datiRicev)=> {
-      const p2 = document.createElement('p')
-      p2.textContent = datiRicev.debut.anime;
-      document.body.appendChild(p2)
-    })
-
+        return fetch(`${url}/${datiRicevuti.characters[0].id}`);//ritorno la fetch(cioè la Promise) di un sotto elemento
+    }).then((rispostaServer) => {//una volta che la Promise risulterà fulfilled
+      return rispostaServer.json()//ritornerò la risposta JSON in oggetto JS
+    }
+    // ,e => console.log('Errore di connessione')//dovremmo in teoria gestire tutti gli errori per ogni .then()
+    )
+      .then((datiRicev)=> {//una volta fatta la conversione (fulfilled)
+      const p2 = document.createElement('p')//creo p
+      p2.textContent = datiRicev.debut.appearsIn;//inserisco altri contenuti
+      document.body.appendChild(p2)//li "appendo" in HTML
+      datiRicev.tools.forEach(tool => {//ciclo un array di un sotto elemento
+      const div = document.createElement('div')//Creo un div
+      const p3 = document.createElement('p').textContent = tool//e un p dove metto contenuto
+      document.body.append(div)//il div lo appendo al body
+      div.append(p3)//e tutti i p al div
+      });
+    })//Per fortuna ci viene in aiuto "catch" che "cattura" tutti gli errori dei then in un'unica riga
+      .catch(e => {
+        console.log('Errore di connessione ', e);
+      })
+        .finally(_ => {//Viene eseguito a prescindere dallo stato della Promise (fulfilled o rejected)
+          console.log('Finito');
+        })
+  }
     //Com'è strutturata una Promise
+
     //Creo istanza dell'oggetto "Promise"
     // let p = new Promise((resolve, reject) => {//res e rej sono funzioni di callback
     //   let x = 2 + 2;
@@ -50,6 +73,7 @@
     // });
 
     //Usiamo .then() quando la funzione passa (resolve)
+
     // p.then(messaggio => {//Definiamo il parametro della funzione res, il messaggio
     //     console.log('Siamo nel then ', messaggio);//Definisco cosa fa nel resolve
     // }).catch(errore => {
@@ -57,6 +81,7 @@
     // })
 
     //ESEMPIO di richiesta dati asincrona con Promises
+
     // scegliCondimenti()
     //     .then(function (condimenti){
     //         return piazzaOrdine(condimenti)
@@ -70,6 +95,7 @@
     //     .catch(failureCB);
 
     //Esempio di chiamata asincrona con fetch e Promise
+
     // fetch('coffe.jpg')//Restituisce una Promise
     //     .then(res => {
     //         if(!res.ok){//Se la risposta non è ok
