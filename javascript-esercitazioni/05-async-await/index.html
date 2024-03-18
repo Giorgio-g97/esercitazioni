@@ -1,18 +1,44 @@
 <!DOCTYPE html>
 <html lang="it">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
-<script>
-
+  </head>
+  <body></body>
+  <script>
 // ASYNC e AWAIT: Si usano al posto dei classici .then()
+// Rendono una funzione SINCRONA in ASINCRONA
 
+    // const url = "https://dattebayo-api.onrender.com/characters";
+    // async function functAsync() {
+    //   const ris = await fetch(url); //con await fetch() ci sarà direttamente una response() e non una Promise
+    //   return ris.json(); //Promise
+    // }
 
+    // functAsync().then((dati) => {
+    //   const img = document.createElement("img"); //creiamo due elementi
+    //   const p = document.createElement("p");
+    //   img.src = dati.characters[0].images[0]; //Attribuiamo il link a "src"
+    //   p.textContent = dati.characters[0].name; //Cosa simile per il testo
+    //   document.body.appendChild(p); // li "appendiamo" al body
+    //   document.body.appendChild(img);
+    // });
 
-</script>
+// ASYNC e AWAIT Edoardo Midali
+
+    // async function hello() {
+    //     return 'Hello'
+    // }
+
+    // console.log(hello());//ritorna una Promise (fulfilled)
+
+    // hello().then(value => console.log(value))//Con .then() ho la risposta
+  
+    async function hello(){
+        return greeting = await Promise.resolve('hello');
+    }
+
+    hello().then(val => console.log(val))
+  </script>
 </html>
