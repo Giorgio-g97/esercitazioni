@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises</title>
+  </head>
+  <body></body>
+  <script>
+    //Cosa sono: indica lo STATO di una richiesta
+
+const prom = fetch('https://dog.ceo/api/breeds/image/random')
+console.log(prom);//Pending (in attesa)
+
+prom.then((mes) => {
+    console.log(mes.json());//Pending
+})//Su ogni Promise possiamo richiamare il metodo .then()
+
+
+//Com'è strutturata una Promise
+//Creo istanza dell'oggetto "Promise"
+    // let p = new Promise((resolve, reject) => {//res e rej sono funzioni di callback
+    //   let x = 2 + 2;
+    //   if (x === 4) {//se verificata
+    //     resolve("Fa 4");//esegue funzione resolve
+    //   } else {//altrimenti
+    //     reject("Errore, non fa 4");//esegue funzione reject
+    //   }
+    // });
+
+//Usiamo .then() quando la funzione passa (resolve)
+    // p.then(messaggio => {//Definiamo il parametro della funzione res, il messaggio
+    //     console.log('Siamo nel then ', messaggio);//Definisco cosa fa nel resolve
+    // }).catch(errore => {
+    //     console.log('Non sono riuscito a stampare, errore: ', errore);
+    // })
+
+    //ESEMPIO di richiesta dati asincrona con Promises
+    // scegliCondimenti()
+    //     .then(function (condimenti){
+    //         return piazzaOrdine(condimenti)
+    //     })
+    //     .then(function (ordine){
+    //         return collezionaOrdini(ordine)
+    //     })
+    //     .then(function (pizza){
+    //         mangiaPizza(pizza)
+    //     })
+    //     .catch(failureCB);
+
+    //Esempio di chiamata asincrona con fetch e Promise
+    // fetch('coffe.jpg')//Restituisce una Promise
+    //     .then(res => {
+    //         if(!res.ok){//Se la risposta non è ok
+    //             throw new Error (`HTTP error! status: ${res.status}`)// L’operatore throw serve a generare un errore
+    //         }else {
+    //             return res.blob();
+    //         }
+    //     })
+    //     .then(myBlob => {
+    //         let objURL = URL.createObjectURL(myBlob)//Creiamo sempre l'url
+    //         let img = document.createElement('img');//Creiamo il tag <img>
+    //         img.src = objURL//immettiamo l'url nell'attr src
+    //         document.body.appendChild(img)//"Appendiamo" al body
+    //     })
+    //     .catch(e => {
+    //         console.log('There is a problem with fetch operation', e.message);
+    //     })
+
+    // Come creare una Promise
+
+    // let timeoutPromise = new Promise((res, rej) => {//La Promise si aspetta due parametri: o viene ritornato il risultato (res) o viene respinta (rej)
+    //     setTimeout(() => {
+    //         res('Success!')
+    //     }, 2000);
+    // })
+
+    //Esempio pratico
+
+    // function timeoutPromise(mes, interval) {
+    //   return new Promise((res, rej) => {
+    //     if (mes === "" || typeof mes !== "string") {
+    //       //Controllo mes
+    //       rej("Il messaggio è vuoto o non è una stringa");
+    //     } else if (interval < 0 || typeof interval !== "number") {
+    //       //Controllo timer
+    //       rej("L'intevallo è negativo o non è un numero");
+    //     } else {
+    //       setTimeout(() => {
+    //         res(mes);
+    //       }, interval);
+    //     }
+    //   });
+    // }
+
+    // timeoutPromise("Ciao", 1000)
+    //   .then((mes) => {
+    //     alert(mes);
+    //   })
+    //   .catch((e) => {
+    //     console.log("Error " + e);
+    //   });
+  </script>
+</html>
