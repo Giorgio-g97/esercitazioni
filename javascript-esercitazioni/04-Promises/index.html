@@ -9,16 +9,37 @@
   <script>
     //Cosa sono: indica lo STATO di una richiesta
 
-const prom = fetch('https://dog.ceo/api/breeds/image/random')
-console.log(prom);//Pending (in attesa)
+    const url = 'https://dattebayo-api.onrender.com/characters'
+    const prom = fetch(url);
+    // console.log(prom); //Pending (in attesa)
 
-prom.then((mes) => {
-    console.log(mes.json());//Pending
-})//Su ogni Promise possiamo richiamare il metodo .then()
+// Metodo non corretto
+    // prom.then((mes) => {
+    //     console.log(mes.json());//restituisce una Promise se consollogghiamo
+    // })//Su ogni Promise possiamo richiamare il metodo .then()
 
+// Utilizzo standard per ricevere i dati
+    prom.then((messaggio) => {//La fetch creerà la prima PROMISE, Fatto il fulfilled della 1° Promise
+        return messaggio.json();//ritorneremo il dato parsato da JSON ad oggetto JS
+    }).then((datiRicevuti) => {//Una volta aspettato e fatto il 2° fulfilled del parse in oggetto JS
+        console.log(datiRicevuti);//Stamperemo il dato
+        const img = document.createElement('img')//creiamo due elementi
+        const p = document.createElement('p')
+        img.src = datiRicevuti.characters[0].images[0] //Attribuiamo il link a "src"
+        p.textContent = datiRicevuti.characters[0].name //Cosa simile per il testo
+        document.body.appendChild(p)// li "appendiamo" al body
+        document.body.appendChild(img)
+        return fetch(`${url}/${datiRicevuti.characters[0].id}`);
+    }).then((rispostaServer) => {
+      return rispostaServer.json()
+    }).then((datiRicev)=> {
+      const p2 = document.createElement('p')
+      p2.textContent = datiRicev.debut.anime;
+      document.body.appendChild(p2)
+    })
 
-//Com'è strutturata una Promise
-//Creo istanza dell'oggetto "Promise"
+    //Com'è strutturata una Promise
+    //Creo istanza dell'oggetto "Promise"
     // let p = new Promise((resolve, reject) => {//res e rej sono funzioni di callback
     //   let x = 2 + 2;
     //   if (x === 4) {//se verificata
@@ -28,7 +49,7 @@ prom.then((mes) => {
     //   }
     // });
 
-//Usiamo .then() quando la funzione passa (resolve)
+    //Usiamo .then() quando la funzione passa (resolve)
     // p.then(messaggio => {//Definiamo il parametro della funzione res, il messaggio
     //     console.log('Siamo nel then ', messaggio);//Definisco cosa fa nel resolve
     // }).catch(errore => {
