@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web API e manipolazione DOM</title>
+</head>
+<body>
+    <button id="bottone" class="prova">Bottone</button>
+    <div class="prova"></div>
+    <span class="prova"></span>
+</body>
+<script>
+//Possiamo prendere tre tipi di "strati" nel WEB:
+// 1) Document (es. document.querySelector())
+// 2) Window, dove possiamo sistemare larghezza, altezza ecc..
+// 3) Navigator (astratta) possiamo prendere impostazioni (es. lingua)
+
+//DOM (Document Object Model)
+
+let x = document.getElementById('bottone');
+
+let y = document.querySelector('button');// querySelector il più usato e va bene per tutti
+let z = document.querySelector('#bottone');
+let k = document.querySelector('.prova');
+
+let w = document.querySelectorAll('.prova');
+
+let j = document.getElementsByClassName('prova');
+
+//Creare nuovi nodi
+const div = document.querySelector('div');//Prendo l'elemento
+const paragrafo = document.createElement('p');//Creo l'elemento nodo (in questo caso un paragrafo)
+paragrafo.textContent = 'Elemento creato dinamicamente. ';//Scrivo contenuto
+div.appendChild(paragrafo);//Al div appendo il paragrafo
+
+const testoExtra = document.createTextNode('Testo Extra');//Per creare un testo extra (Il testo è un NODO, NON un ELEMENTO)
+paragrafo.appendChild(testoExtra);//"Appende" al paragrafo il testo extra
+
+//Spostare/rimuovere nodi
+
+document.body.appendChild(paragrafo)//Sposto
+
+paragrafo.removeChild(testoExtra);//Rimuovo child (può essere elemento tipo <p> o nodo tipo testo)
+// metodo 2
+// testoExtra.remove();
+
+// Manipolare gli stili
+
+paragrafo.style.color = 'red';
+</script>
+</html>

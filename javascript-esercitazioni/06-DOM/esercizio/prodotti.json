@@ -1,0 +1,21 @@
+[{
+    "id": 1,
+    "nome": "cappello",
+    "desc": "Cappello Unisex",
+    "immagine": "https://cdn-icons-png.flaticon.com/512/864/864744.png",
+    "prezzo": "9.99"
+},
+{
+    "id": 2,
+    "nome": "sciarpa",
+    "desc": "Sciarpa lana",
+    "immagine": "https://cdn-icons-png.flaticon.com/512/6371/6371337.png",
+    "prezzo": "7.99"
+},
+{
+    "id": 3,
+    "nome": "guanti",
+    "desc": "Guanti neri",
+    "immagine": "https://cdn-icons-png.flaticon.com/512/1031/1031506.png",
+    "prezzo": "4.99"
+}]
