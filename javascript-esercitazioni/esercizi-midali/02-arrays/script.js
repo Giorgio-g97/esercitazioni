@@ -5,7 +5,7 @@ const ul = document.createElement('ul')
 function getRandNum() {
   let randNum;
   for (i = 0; i < 10; i++) {
-    randNum = Math.floor(Math.random() * 100);
+    randNum = Math.floor(Math.random() * 100);//Math.floor() arrotonda, .random() genera numero casuale
     myArr.push(randNum);
   }
   console.log(myArr);
