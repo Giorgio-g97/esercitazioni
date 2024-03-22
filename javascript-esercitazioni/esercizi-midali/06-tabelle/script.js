@@ -38,7 +38,7 @@ const tab = document.getElementById("tabella");
 data.forEach((el) => {//Itero array
     console.log(el)//Mi da oggetti
   const r = document.createElement("tr");
-  //Per iterare un oggetto non possiamo usare .forEach() perché è relativo all'array, ma usiamo 'Object.keys' per "trasformarlo" in un array
+  //Per iterare ogni elemento (chiave: valore) di un oggetto non possiamo usare .forEach() perché è relativo all'array, ma usiamo 'Object.keys()'
   
   Object.keys(el) //itero l'oggetto
     .forEach((key) => {
