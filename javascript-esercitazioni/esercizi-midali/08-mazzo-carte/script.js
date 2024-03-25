@@ -2,7 +2,7 @@ class Deck{
     
     constructor(){
         this.cards = [1,2,3,4,5,6,7,8,9,'fante', 'donna', 're'];//Settiamo le carte (in questo caso sono carte francesi)
-        // console.log('Genero nuovo mazzo: ', this.cards);
+        console.log('Genero nuovo mazzo: ', this.cards);
     }
 
     mescolaCarte(){
