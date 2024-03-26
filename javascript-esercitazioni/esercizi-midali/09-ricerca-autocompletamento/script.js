@@ -1,4 +1,4 @@
-const nomi = ["Giacomo", "Nunzio", "Giorgio", "Mario"];
+const nomi = ["Giacomo", "Nunzio", "Giorgio", "Mario", "Anna", "Giovanna", "Andrea"];
 
 const searchInput = document.querySelector(".inputSearch");
 const risultato = document.querySelector(".res-search");
@@ -11,8 +11,8 @@ function inputMatch(value){
 //C'è un secondo parametro che è il flag, serve per
 //Settare determinati filtri nella ricerca
 //Vedi docs di RegExp
-  const reg = new RegExp(value, "gi")//Espressioni regolari
-//imposto l'espressione secondo quanto mi passa il parametro del valore che ricevo dall'input della ricerca
+  const reg = new RegExp(`^${value}`, "gi")//Espressioni regolari
+//imposto l'espressione secondo quanto mi passa il parametro del valore che ricevo dall'input della ricerca che inizia con "x"
   return nomi.filter(nome => {//Filtrando l'array di nomi
     if(nome.match(reg)) return nome;//Se il singolo nome matcha con quanto passato dall'input, ritorna il nome in un uovo array
   })
