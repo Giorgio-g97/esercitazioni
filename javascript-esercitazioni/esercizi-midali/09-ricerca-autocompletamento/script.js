@@ -3,7 +3,7 @@ const nomi = ["Giacomo", "Nunzio", "Giorgio", "Mario"];
 const searchInput = document.querySelector(".inputSearch");
 const risultato = document.querySelector(".res-search");
 
-searchInput.addEventListener("keypress", autocomplete);
+searchInput.addEventListener("keyup", autocomplete);
 
 function inputMatch(value){
   if(value == "") return []
