@@ -13,16 +13,16 @@ function inputMatch(value){
 //Vedi docs di RegExp
   const reg = new RegExp(value, "gi")//Espressioni regolari
 //imposto l'espressione secondo quanto mi passa il parametro del valore che ricevo dall'input della ricerca
-  return nomi.filter(nome => {
-    if(nome.match(reg)) return nome;
+  return nomi.filter(nome => {//Filtrando l'array di nomi
+    if(nome.match(reg)) return nome;//Se il singolo nome matcha con quanto passato dall'input, ritorna il nome in un uovo array
   })
   }
 
 function autocomplete(e){
     risultato.classList.add("border-2", "p-2");
-    const searchValue = e.target.value;//Prendo il valore dall'input (non la chiave, la chiave è quello che scrivi)
+    const searchValue = e.target.value;//Prendo il valore dall'input (NON la chiave, la chiave è quello che scrivi)
     let sugg = ''
-    const nomi = inputMatch(e.target.value)
+    const nomi = inputMatch(searchValue)
     nomi.forEach((nome) => {//Per ogni nome all'interno dell'array di nomi
       sugg += `<li class="hover:bg-gray-200" onClick="seleziona(event)">${nome}</li>`//Genera un elenco di nomi
     });
