@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="section-1">
+      <h3>Scegli un colore passandoci sopra</h3>
+      <div class="color-sample color-1"></div>
+      <div class="color-sample color-2"></div>
+      <div class="color-sample color-3"></div>
+    </div>
+    <div class="section-2">
+      <h2>Colore che hai scelto</h2>
+      <div class="color-picker"></div>
+    </div>
+  </body>
+  <script>
+    const divPicker = document.querySelector(".color-picker");
+    function getColor(classCol) {
+      //Creo funzione getColor()
+      const cols = document.querySelectorAll(`.${classCol}`); //Prendo tutti i color-sample
+      cols.forEach((col) => {
+        //E per ciascuno di loro
+        col.addEventListener("mouseover", () => {
+          //Segno un eventListener che al passaggio del mouse
+          const colorpick = window.getComputedStyle(col).backgroundColor; //Mi prende il colore in RGB
+          console.log(colorpick);
+          divPicker.style.backgroundColor = colorpick; //E imposto il color nel div di scelta
+        });
+      });
+    }
+
+    getColor("color-sample");//Avvio la funzione
+  </script>
+</html>

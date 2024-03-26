@@ -1,0 +1,20 @@
+.color-1 {
+  background-color: aqua;
+  width: 100px;
+  height: 50px;
+}
+.color-2 {
+  background-color: chartreuse;
+  width: 100px;
+  height: 50px;
+}
+.color-3 {
+  background-color: darkorange;
+  width: 100px;
+  height: 50px;
+}
+
+.color-picker {
+  width: 100px;
+  height: 50px;
+}
