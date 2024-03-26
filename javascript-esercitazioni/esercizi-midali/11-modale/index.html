@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button class="click-modal">Clicca per Modale</button>
+    <div class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Questo è un modale</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    const modalBtn = document.querySelector(".click-modal");
+    const modal = document.querySelector(".modal");
+    modalBtn.addEventListener("click", () => {
+      modal.style.display = "block";
+    });
+    const close = document.querySelector('.close')
+        .addEventListener('click', ()=> {
+            modal.style.display = "none";
+        })
+  </script>
+</html>
