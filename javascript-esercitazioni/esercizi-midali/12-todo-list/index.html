@@ -7,61 +7,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="todo-container">
-      <input class="titolo rounded-md p-1 m-3 ring-1 ring-inset ring-gray-300" type="text" placeholder="Cosa devo ricordarti?" />
-      <input class="data rounded-md p-1 m-3 ring-1 ring-inset ring-gray-300" type="date" />
-      <button class="addList bg-blue-500 hover:bg-blue-700 text-white m-3 p-1 rounded">Aggiungi</button>
+    <div class="todo-container grid grid-cols-3">
+      <input
+        class="titolo rounded-md p-1 m-3 ring-1 ring-inset ring-gray-300"
+        type="text"
+        placeholder="Cosa devo ricordarti?"
+      />
+      <input
+        class="data rounded-md p-1 m-3 ring-1 ring-inset ring-gray-300"
+        type="date"
+      />
+      <button
+        class="addList bg-blue-500 hover:bg-blue-700 text-white m-3 p-1 rounded"
+      >
+        Aggiungi
+      </button>
     </div>
 
-    <div class="todo-list"></div>
+    <div class="todo-list p-1 m-3"></div>
   </body>
-  <script>
-    const todos = [
-      {
-        id: 1,
-        titolo: "Alzarsi presto",
-        data: "26/03/2024",
-      },
-      {
-        id: 2,
-        titolo: "Lavarsi i denti",
-        data: "26/03/2024",
-      },
-      {
-        id: 3,
-        titolo: "Andare a dormire",
-        data: "26/03/2024",
-      },
-    ];
-
-    const input = document.querySelector('.titolo');
-    const data = document.querySelector('.data');
-    const listBtn = document.querySelector('.addList');
-    const divList = document.querySelector(".todo-list");
-
-    function updateList() {
-      let res = ``;
-      todos.forEach((todo) => {
-        const task = `
-        <div class="flex w-1/2 m-4">
-            <p>${todo.titolo}</p>
-            <p>${todo.data}</p>
-        </div>
-            `;
-        res += task;
-      });
-      divList.innerHTML = res;
-    }
-
-    listBtn.addEventListener('click', addList)
-
-    function addList() {
-        const inputValue = input.value;
-        console.log(inputValue);
-        const itaDate = new Date(data.value).toLocaleDateString('it-IT', {dateStyle: 'short'})
-        console.log(itaDate)
-    }
-
-    updateList();
+  <script src="script.js">
+    
   </script>
 </html>
