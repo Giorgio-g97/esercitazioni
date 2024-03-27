@@ -5,7 +5,7 @@ class todoList {
     this.aggiornaTasks(); //Aggiorna sempre i tasks
   }
   addTask(task) {
-    //FUnzione aggiungi task
+    //Funzione aggiungi task
     this.tasks.push(task); //Pusha task nell'array
     localStorage.setItem("tasks", JSON.stringify(this.tasks)); //Salva nel localStorage
     this.generaTask(task); //Esegui funzione di generazione task HTML
@@ -25,6 +25,7 @@ class todoList {
       const taskDiv = document.createElement("div");//Genero div container del task
       taskDiv.classList.add("grid", "grid-cols-2");//Assegno classi
       const p = document.createElement("span"); //Crea parag
+      p.classList.add("mx-3")
       p.textContent = task; //Metti contenuto del task che gli passi come param (input.value)
       taskDiv.appendChild(p); //Appendi al div
       //Genera CompleteBtn
